@@ -1,2 +1,2 @@
-var path = "localhost:3000";
-var restPath  = "rest";
+var path = "http://localhost:3000";
+var restPath  = "service";
