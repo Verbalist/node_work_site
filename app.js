@@ -30,16 +30,6 @@ app.use('/users', users);
 app.use('/employee', employee)
 app.use('/employer', employer)
 
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-// app.use('/employee', employee.show)
-
 
 
 
