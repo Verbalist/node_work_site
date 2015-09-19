@@ -1,0 +1,43 @@
+extends ../layout/layout
+
+block content
+	<h1>Profile</h1>
+	<div id="profile_from_wrapper">
+		
+		<form class="form-horizontal" action="" method="post" autocomplete="on" onsubmit="return false">
+			
+			<div id="form_element_wrapper">   
+	            <label id="description_label">
+	            	Description
+	            </label>
+
+	            <input type="textarea" name="description" id="input_description">
+            </div>
+
+            <div id="form_element_wrapper">
+	            <label id="requirements_label">
+	            	Requirements
+	            </label>
+
+	            <input type="textarea" name="requirements" id="input_requirements">
+            </div>
+
+
+			<div id="form_element_wrapper">
+	            <label id="salary_label">
+	            	Salary
+	            </label>
+
+	            <input type="textarea" name="salary" id="input_salary">
+            </div>
+
+            <div id="form_element_wrapper">
+	            <label id="location_label">
+	            	Location
+	            </label>
+
+	            <input type="textarea" name="experience" id="location_experience">
+            </div>
+
+		</form>
+	</div>

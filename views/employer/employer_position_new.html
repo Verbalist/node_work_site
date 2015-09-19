@@ -1,8 +1,8 @@
 extends ../layout/layout
 
 block content
-	<h1>Create new resume</h1>
-	<div id="create_resume_from_wrapper">
+	<h1>Create new position</h1>
+	<div id="create_position_from_wrapper">
 		
 		<form class="form-horizontal" action="" method="post" autocomplete="on" onsubmit="return false">
 			
@@ -23,36 +23,27 @@ block content
             </div>
 
             <div id="form_element_wrapper">
-	            <label id="skills_label">
-	            	Skills
+	            <label id="requirements_label">
+	            	Requirements
 	            </label>
 
-	            <input type="textarea" name="skills" id="input_skills_new">
+	            <input type="textarea" name="requirements" id="input_requirements_new">
             </div>
 
             <div id="form_element_wrapper">
-	            <label id="experience_label">
-	            	Experience
-	            </label>
-
-	            <input type="textarea" name="experience" id="input_experience_new">
-            </div>
-
-			<div id="form_element_wrapper">
-	            <label id="education_label">
-	            	Education
-	            </label>
-
-	            <input type="textarea" name="education" id="input_education_new">
-            </div>
-
-
-			<div id="form_element_wrapper">
 	            <label id="salary_label">
 	            	Salary
 	            </label>
 
 	            <input type="textarea" name="salary" id="input_salary_new">
+            </div>
+
+			<div id="form_element_wrapper">
+	            <label id="location_label">
+	            	Education
+	            </label>
+
+	            <input type="textarea" name="location" id="input_location_new">
             </div>
 
 		</form>
