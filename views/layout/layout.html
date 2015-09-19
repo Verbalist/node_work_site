@@ -5,14 +5,24 @@
         <title>{% block title %}work{% endblock %}</title>
 
         {% block head %}
-            <link rel="stylesheet" href="/public/stylesheets/framefork/bootstrap-theme.css">
-            <link rel="stylesheet" href="/public/stylesheets/framefork/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="/public/stylesheets/framefork/bootstrap.css">
-            <link rel="stylesheet" href="/public/stylesheets/framefork/bootstrap.min.css">
-            <link rel="stylesheet" href="/public/stylesheets/styles.css">
-            <link rel="javascript" href="/public/javascripts/framework/bootstrap.js">
-            <link rel="javascript" href="/public/javascripts/framework/bootstrap.min.js">
-            <link rel="javascript" href="/public/javascripts/framework/npm.js">
+            <link rel="stylesheet" href="/stylesheets/framework/bootstrap-theme.css"/>
+            <link rel="stylesheet" href="/stylesheets/framework/bootstrap-theme.min.css"/>
+            <link rel="stylesheet" href="/stylesheets/framework/bootstrap.css"/>
+            <link rel="stylesheet" href="/stylesheets/framework/bootstrap.min.css"/>
+
+            <link rel="stylesheet" href="/stylesheets/view/style.css"/>
+            <link rel="stylesheet" href="/stylesheets/client/layout.css"/>
+
+            <!--script rel="text/javascript" src="/javascripts/framework/bootstrap.js"/-->
+            <script rel="text/javascript" src="/javascripts/framework/bootstrap.min.js"/>
+            <script rel="text/javascript" src="/javascripts/framework/npm.js"/>
+
+            <script rel="text/javascript" src="/javascripts/client/layout.js"/>
+            <script rel="text/javascript" src="/javascripts/view/layout.js"/>
+            <script rel="text/javascript" src="/javascripts/client/requestMaker.js"/>
+            <script rel="text/javascript" src="/javascripts/client/config.js"/>
+
+
             
         {% endblock %}
     </head>
