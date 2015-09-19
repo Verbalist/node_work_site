@@ -1,8 +1,17 @@
 {% extends '../layout/layout.html' %}
+{% block head%}
+	{% parent %}
+	<script type="text/javascript" src="/javascripts/client/employee.js"></script>
+	<script type="text/javascript" src="/javascripts/client/requesMaker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(findEmployeeById("/employee/name_search", {{ employee_id }}))
 
+	</script>
+	{% endblock%}
 {% block content %} 
 
 <h1>Welcome</h1>
+<h2><h2>
 <div id="info_wrapper">
 	
 <div id="employee_jobs_news"></div>

@@ -17,3 +17,17 @@ function doRequestAjaxPost (requestJson, URL, async){
     });
 
 }
+
+function sendJSON(path, args) {
+    var requestBody = 'json=' + encodeURIComponent(JSON.stringify(args));
+    //  Send request
+    var result = doRequestAjaxPost(requestBody, path, true).responseJSON;
+    if (result !== undefined) {
+        if (result.error_code != 0) {
+            console.log("Error code = " + result.error_code);
+        }
+    } else {
+        console.log("Server connection error");
+    }
+    return result;
+}

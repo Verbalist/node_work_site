@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/:name', function(req, res, next) {
 	console.log('/:name')
 	console.log(req.params.name)
-  res.render('employee/employee_index');
+  res.render('employee/employee_index', {'employee_name': req.params.name});
 });
 
 router.get('/:name/resumes', function(req, res, next) {
