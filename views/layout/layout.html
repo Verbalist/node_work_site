@@ -1,9 +1,16 @@
-doctype html
-html
-  head
-  body
-    include:markdown header.md
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}work{% endblock %}</title>
 
-    block content
-
-    include:markdown footer.md
+        {% block head %}
+            <link rel="stylesheet" href="main.css">
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}<h1>Header</h1>{% endblock %}
+        {% block content %}<h1>Content</h1>{% endblock %}
+        {% block footer %}<h1>Footer</h1>{% endblock %}
+    </body>
+</html>
