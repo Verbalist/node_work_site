@@ -13,8 +13,6 @@ var employer = require('./routes/employer')
 var search = require('./routes/search')
 var auth = require('./routes/auth')
 
-
-
 var app = express();
 
 // view engine setup
