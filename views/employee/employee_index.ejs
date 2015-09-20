@@ -1,3 +1,4 @@
+<% layout('../layout/layout') -%>
 <h1>Welcome employee</h1>
 <h2><h2>
 <div id="info_wrapper">
@@ -7,7 +8,8 @@
 
 </div>
 
- <link rel="stylesheet" href="/stylesheets/client/employee.css"/>
-            
- <script rel="text/javascript" src="/javascripts/client/employee.js"/>
- <script rel="text/javascript" src="/javascripts/view/employee.js"/>
+
+<% stylesheet('/stylesheets/client/employee.css') -%>
+
+<% script('/javascripts/client/employee.js') -%>   
+<% script('/javascripts/view/employee.js') -%>      
