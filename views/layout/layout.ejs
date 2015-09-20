@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,21 +12,23 @@
             <link rel="stylesheet" href="/stylesheets/client/layout.css"/>
 
             <!--script rel="text/javascript" src="/javascripts/framework/bootstrap.js"/-->
-            <script rel="text/javascript" src="/javascripts/framework/bootstrap.min.js"/>
-            <script rel="text/javascript" src="/javascripts/framework/npm.js"/>
-            <script rel="text/javascript" src="/javascripts/framework/mustache.min.js"/>
+            <script type="text/javascript" src="/javascripts/framework/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/javascripts/framework/npm.js"></script>
+            <script type="text/javascript" src="/javascripts/framework/mustache.min.js"></script>
 
-            <script rel="text/javascript" src="/javascripts/client/layout.js"/>
-            <script rel="text/javascript" src="/javascripts/view/layout.js"/>
-            <script rel="text/javascript" src="/javascripts/client/requestMaker.js"/>
-            <script rel="text/javascript" src="/javascripts/client/config.js"/>
+            <script type="text/javascript" src="/javascripts/client/layout.js"></script>
+            <script type="text/javascript" src="/javascripts/view/layout.js"></script>
+            <script type="text/javascript" src="/javascripts/client/requestMaker.js"></script>
+            <script type="text/javascript" src="/javascripts/client/config.js"></script>
     </head>
     <body>
 
         <% include header %>
 
-        <%- body %>
-
+        <div>
+            <%- body -%>
+        </div>
+        
         <% include footer %>
     </body>
 </html>
