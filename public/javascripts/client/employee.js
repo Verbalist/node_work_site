@@ -32,7 +32,7 @@ function addResumeEmployee(){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',
@@ -76,7 +76,7 @@ function updateResumeEmployee(resume_id){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',
@@ -114,7 +114,7 @@ function getResumeByIdEmployee(resume_id){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -140,7 +140,7 @@ function getResumesEmployee(){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -165,7 +165,7 @@ function deleteResumeEmployee(resume_id){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -192,7 +192,7 @@ function getProfileEmployee(){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -223,7 +223,7 @@ function updateProfileEmployee(){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',
@@ -261,7 +261,7 @@ function deleteEmployee(){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {

@@ -18,6 +18,27 @@ function doRequestAjaxPost (requestJson, URL, async){
 
 }
 
+function doRequestAjaxPostEmployee (requestJson, URL, async){
+
+    return $.ajax({
+        url: path + restPath + employeePath + URL,
+        type: 'POST',
+        data: requestJson,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        mimeType: 'application/json',
+        async: async,
+
+        success: function (data) {
+            return data
+        },
+        error: function (data, status, er) {
+
+        }
+    });
+
+}
+
+
 function sendJSON(path, args) {
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(args));
     //  Send request
