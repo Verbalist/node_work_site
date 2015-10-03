@@ -1,7 +1,39 @@
-function checkUndefined(result){
-    if (result !== undefined) {
+function errorText(error_text,error_template){
+    this.error_text = error_text;
+    this.error_template = error_template;
+}
+
+function showPositionSettings(){
+    console.log("showPositionSettings - Started!!!");    
+}
+
+function showPositions(){
+    console.log("showPositions - Started!!!");    
+}
+
+function showProfileSettings(){
+    console.log("showProfileSettings - Started!!!");    
+}
+
+
+function checkUndefined(result,error_obj){
+    var serverErrorLabel = $('<label/>', {
+                    id: 'server_connection_error',
+                    "class": 'user-server-error'
+                });
+    if(result !== undefined) {
         if (result.error_code != 0) {
             console.log("Error code = " + result.error_code);
+        }
+        if(error_obj !== undefined){
+            switch (result.error_code) {
+                        case 403:
+                            serverErrorLabel.text(error_obj.error_text);
+                            if(error_obj.error_template !== undefined){
+                                serverErrorLabel.appendTo(error_obj.error_template);
+                            }
+                            break;
+                }
         }
     } else {
         console.log("Server connection error");
@@ -26,15 +58,16 @@ function findEmployerById(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"));
 
     return result;
 }
 
 function createPosition(employer_id){
     console.log("createPosition - Started!!!");
-    
-    var serializedArray = $("create_position_from_wrapper").serializeArray();
+    var template_string = "#create_position_from_wrapper";
+
+    var serializedArray = $(template_string).serializeArray();
 
     //  Prepare JSON and settings
 
@@ -55,15 +88,15 @@ function createPosition(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
 
     return result;
 }
 
 function editPosition(employer_id){
     console.log("editPosition - Started!!!");
-    
-    var serializedArray = $("edit_position_from_wrapper").serializeArray();
+    template_string = "#edit_position_from_wrapper"
+    var serializedArray = $(template_string).serializeArray();
 
     //  Prepare JSON and settings
 
@@ -84,15 +117,15 @@ function editPosition(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
     
     return result;
 }
 
-function getProfile(employer_id){
-    console.log("editPosition - Started!!!");
-    
-    var serializedArray = $("employer_profile_from_wrapper").serializeArray();
+function getProfileEmployer(employer_id){
+    console.log("getProfileEmployer - Started!!!");
+    template_string = "#employer_profile_from_wrapper"
+    var serializedArray = $(template_string).serializeArray();
 
     //  Prepare JSON and settings
 
@@ -113,7 +146,7 @@ function getProfile(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
     
     return result;
 }
