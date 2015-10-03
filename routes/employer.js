@@ -16,19 +16,19 @@ router.get('/:name/positions', function(req, res, next) {
 });
 
 router.post('/:name/position/new', function(req, res, next) {
-	console.log('/:name/positions/new')
+	console.log('/:name/position/new')
 	console.log(req.params.name)
   res.render('index', { title: 'Express' });
 });
 
 router.post('/:name/position/edit', function(req, res, next) {
-	console.log('/:name/positions/edit/')
+	console.log('/:name/position/edit/')
 	console.log(req.params.name)
   res.render('index', { title: 'Express' });
 });
 
 router.get('/:name/profile', function(req, res, next) {
-	console.log('/:name/positions/profile/')
+	console.log('/:name/profile/')
 	console.log(req.params.name)
   res.render('index', { title: 'Express' });
 });

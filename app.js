@@ -30,17 +30,17 @@ app.engine('html', require('ejs').renderFile);
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());  
+//app.use(express.json());  
 
 app.use('/', index);
 app.use('/employee', employee)
 app.use('/employer', employer)
 app.use('/auth', auth)
 app.use('/search', search)
-app.use('/api', api)
+//app.use('/api', api)
 
 
 // catch 404 and forward to error handler
