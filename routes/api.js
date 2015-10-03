@@ -23,7 +23,7 @@ router.get('/employee/resumes', function(req, res, next) {
   res.json(result);
 });
 
-router.get('/employee/resumes/:id', function(req, res, next) {
+router.get('/employee/resume/:id', function(req, res, next) {
 	console.log('/employee/resumes/' + req.params.id)
 	var result = {};
 

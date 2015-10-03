@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Work</title>
+        <title>Fast job</title>
             <link rel="stylesheet" href="/stylesheets/framework/bootstrap-theme.css"/>
             <link rel="stylesheet" href="/stylesheets/framework/bootstrap-theme.min.css"/>
             <link rel="stylesheet" href="/stylesheets/framework/bootstrap.css"/>
@@ -14,8 +14,8 @@
             <%- stylesheets %>
 
             <!--script rel="text/javascript" src="/javascripts/framework/bootstrap.js"/-->
-            <script type="text/javascript" src="/javascripts/framework/bootstrap.min.js"></script>
             <script type="text/javascript" src="/javascripts/framework/jquery-2.1.4.js"></script>
+            <script type="text/javascript" src="/javascripts/framework/bootstrap.min.js"></script>
             <script type="text/javascript" src="/javascripts/framework/npm.js"></script>
             <script type="text/javascript" src="/javascripts/framework/mustache.min.js"></script>
 
@@ -24,17 +24,26 @@
             <script type="text/javascript" src="/javascripts/client/requestMaker.js"></script>
             <script type="text/javascript" src="/javascripts/client/config.js"></script>
 
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <!-- script src="../../assets/js/ie10-viewport-bug-workaround.js"></script-->
             <%- scripts %>
 
     </head>
     <body>
-
-        <% include header %>
-
-        <div>
-            <%- body -%>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <% include header %>
         </div>
-        
-        <% include footer %>
+      </nav>
+
+      <div class="container">
+
+        <!-- Main component for a primary marketing message or call to action -->
+        <%- body -%>
+
+      </div> <!-- /container -->
+
+      <% include footer %>
     </body>
 </html>

@@ -18,11 +18,11 @@ function doRequestAjaxPost (requestJson, URL, async){
 
 }
 
-function doRequestAjaxPostEmployee (requestJson, URL, async){
+function doRequestAjaxPostEmployee (requestJson, URL, method, async){
 
     return $.ajax({
         url: path + restPath + employeePath + URL,
-        type: 'POST',
+        type: method,
         data: requestJson,
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         mimeType: 'application/json',

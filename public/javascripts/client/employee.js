@@ -1,5 +1,12 @@
-$(document).ready({})
+$(document).ready({
 
+})
+
+function initResume(){
+    var uri = window.location.href;
+    console.log(uri.split("/").pop());
+    var resume = getResumeByIdEmployee(uri.split("/").pop())
+}
 
 function showResumeSettings(){
     console.log("showResumeSettings - Started!!!");    
@@ -26,7 +33,7 @@ function addResumeEmployee(){
     }
 
 
-    var url = "/employee/addResumes";
+    var url = "/addResumes";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
@@ -108,13 +115,13 @@ function getResumeByIdEmployee(resume_id){
 
     var requestArray = {};
     
-    var URL = "/employee/resumes/" + resume_id;
+    var URL = "/resume/" + resume_id;
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -134,13 +141,13 @@ function getResumesEmployee(){
 
     var requestArray = {};
     
-    var URL = "/employee/resumes";
+    var URL = "/resumes";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -159,13 +166,13 @@ function deleteResumeEmployee(resume_id){
 
     var requestArray = {};
     
-    var URL = "/employee/deleteResumes/" + resume_id;
+    var URL = "/deleteResumes/" + resume_id;
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -186,13 +193,13 @@ function getProfileEmployee(){
 
     var requestArray = {};
     
-    var URL = "/employee/profile";
+    var URL = "/profile";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {
@@ -217,13 +224,13 @@ function updateProfileEmployee(){
     }
 
 
-    var URL = "/employee/updateProfile";
+    var URL = "/updateProfile";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST", false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',
@@ -255,13 +262,13 @@ function deleteEmployee(){
 
     var requestArray = {};
     
-    var URL = "/employee/deleteCustomer";
+    var URL = "/deleteCustomer";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {

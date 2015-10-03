@@ -21,9 +21,10 @@ router.get('/:name/resume/new', function(req, res, next) {
   	res.render('employee/employee_resume_new');
 });
 
-router.get('/:name/resume/edit', function(req, res, next) {
-	console.log('/:name/resume/edit')
-	console.log(req.params.name)
+router.get('/:name/resume/:resume_id', function(req, res, next) {
+	console.log('/:name/resume/edit/:resume_id');
+	console.log(req.params.name);
+	console.log(req.params.resume_id);
   	res.render('employee/employee_resume_edit');
 });
 
