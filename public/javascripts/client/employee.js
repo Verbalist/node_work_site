@@ -5,7 +5,11 @@ $(document).ready({
 function initResume(){
     var uri = window.location.href;
     console.log(uri.split("/").pop());
-    var resume = getResumeByIdEmployee(uri.split("/").pop())
+    var response = getResumeByIdEmployee(uri.split("/").pop())
+    var template = $("#editResumeEmployee").html();
+    console.log(response);
+    var html = Mustache.render(template, response.resume);
+    $("#edit_resume_from_wrapper").append(html);
 }
 
 function showResumeSettings(){
