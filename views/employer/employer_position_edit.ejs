@@ -1,51 +1,17 @@
 <% layout('../layout/layout') -%>
 
-	<h1>Edit resume</h1>
-	<div id="edit_position_from_wrapper">
-		
-		<form class="form-horizontal" action="" method="post" autocomplete="on"
-                  onsubmit="return false">
-			
-			<div id="form_element_wrapper">
-	            <label id="name_label">
-	            	Name
-	            </label>
+<h1>Edit position</h1>
+<div id="edit_position_from_wrapper">
 
-	            <input type="text" name="name" id="input_name">
-            </div>
+</div>
 
-	        <div id="form_element_wrapper">   
-	            <label id="description_label">
-	            	Description
-	            </label>
+ <% include ../templates/editPositionEmployer %>
 
-	            <input type="textarea" name="description" id="input_description">
-            </div>
+<script type="text/javascript">
+    initPosition();
+</script>
 
-            <div id="form_element_wrapper">
-	            <label id="requirements_label">
-	            	Requirements
-	            </label>
+<% stylesheet('/stylesheets/client/employer.css') -%>
 
-	            <input type="textarea" name="requirements" id="input_requirements">
-            </div>
-
-
-			<div id="form_element_wrapper">
-	            <label id="salary_label">
-	            	Salary
-	            </label>
-
-	            <input type="textarea" name="salary" id="input_salary">
-            </div>
-
-            <div id="form_element_wrapper">
-	            <label id="location_label">
-	            	Location
-	            </label>
-
-	            <input type="textarea" name="experience" id="location_experience">
-            </div>
-		</form>
-	</div>
- 
+<% script('/javascripts/client/employer.js') -%>
+<% script('/javascripts/view/employer.js') -%>

@@ -1,24 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/employee/resumes', function(req, res, next) {
-	console.log('/employee/resumes')
+router.get('/employer/positions', function(req, res, next) {
+	console.log('/employer/positions')
 	var result = {};
 
 	//some logic
-	var resumes = [
+	var positions = [
 		{
 			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
-			"skills":"html, css",
-			"experience":"over 9000 hours",
-			"education":"full",
-			"salary":"1m dollars"
+			"requirements":"html, css",
+			"location":"Kyiv"
 		}
 	]
 	result.error_code = 0;
-	result.resumes = resumes;
+	result.positions = positions;
 
 	console.log(result);
   res.json(result);
