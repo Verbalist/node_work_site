@@ -81,13 +81,13 @@ function updateResumeEmployee(resume_id){
     }
 
 
-    var URL = "/employee/updateResumes/" + resume_id;
+    var URL = "/updateResumes/" + resume_id;
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST",false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',

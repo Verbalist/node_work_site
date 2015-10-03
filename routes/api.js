@@ -8,6 +8,7 @@ router.get('/employee/resumes', function(req, res, next) {
 	//some logic
 	var resumes = [
 		{
+			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
 			"skills":"html, css",
@@ -29,6 +30,7 @@ router.get('/employee/resume/:id', function(req, res, next) {
 
 	//some logic
 	var resume = {
+			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
 			"skills":"html, css",
@@ -86,6 +88,7 @@ router.get('/employee/profile', function(req, res, next) {
 	//some logic
 	var profile_info = [
 		{
+			"id":"1"
 			"name":"John",
 			"category":"it",
 			"status":"looking for job",

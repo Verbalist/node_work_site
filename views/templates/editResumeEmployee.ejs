@@ -1,8 +1,8 @@
 <script type="text/html" id="editResumeEmployee">
 	
 		
-	<form class="form-horizontal" action="" method="post" autocomplete="on"
-              onsubmit="return false">
+	<form id="resume_employee_settings_form" class="form-horizontal" autocomplete="on"
+              onsubmit="updateResumeEmployee('{{id}}');return false">
 		
 		<div id="form_element_wrapper">
             <label id="name_label">
@@ -51,6 +51,14 @@
             </label>
 
             <input type="textarea" name="salary" id="input_salary" value="{{salary}}">
+        </div>
+
+        <div id="submit_resume_edit_wrapper" class="form-group">
+             <div class="">
+                <button id="submit_resume_edit" name="submit_resume" class="btn btn-info" type="submit">
+                    <span class=""></span> Save
+                </button>
+            </div>
         </div>
 
 	</form>
