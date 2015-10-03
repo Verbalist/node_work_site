@@ -123,3 +123,5 @@ router.post('/employee/deleteCustomer', function(req, res, next) {
 	result.error_code = 0;
   res.json(result);
 });
+
+module.exports = router;
