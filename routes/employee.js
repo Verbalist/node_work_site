@@ -25,7 +25,7 @@ router.get('/:name/resume/:resume_id', function(req, res, next) {
 	console.log('/:name/resume/edit/:resume_id');
 	console.log(req.params.name);
 	console.log(req.params.resume_id);
-  	res.render('employee/employee_resume_edit');
+  	res.render('employee/employee_resume_edit', {auth: true, role: 'employer'});
 });
 
 router.get('/:name/profile', function(req, res, next) {
