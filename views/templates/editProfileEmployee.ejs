@@ -1,0 +1,55 @@
+<script type="text/html" id="editProfileEmployee">
+	
+	<form id="profile_employee_settings_form" class="form-horizontal" autocomplete="on"
+              onsubmit="updateProfileEmployee('{{id}}');return false">
+        
+        <div id="form_element_wrapper">
+            <label id="name_label">
+                Name
+            </label>
+
+            <input type="text" name="name" id="input_name" value="{{name}}">
+        </div>
+
+        <div id="form_element_wrapper">   
+            <label id="category_label">
+                Category
+            </label>
+
+            <input type="textarea" name="category" id="input_category" value="{{category}}">
+        </div>
+
+        <div id="form_element_wrapper">
+            <label id="status_label">
+                Status
+            </label>
+
+            <input talaryype="textarea" name="status" id="input_status" value="{{status}}">
+        </div>
+
+        <div id="form_element_wrapper">
+            <label id="email_label">
+                Email
+            </label>
+
+            <input type="textarea" name="email" id="input_email" value="{{email}}">
+        </div>
+
+        <div id="form_element_wrapper">
+            <label id="phone_label">
+                Phone
+            </label>
+
+            <input type="textarea" name="phone" id="input_phone" value="{{phone}}">
+        </div>
+
+        <div id="submit_profile_edit_wrapper" class="form-group">
+             <div class="">
+                <button id="submit_profile_edit" name="submit_profile" class="btn btn-info" type="submit">
+                    <span class=""></span> Save
+                </button>
+            </div>
+        </div>
+    </form>
+	    
+</script>
