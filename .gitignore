@@ -2,4 +2,4 @@
 *.log
 *.*~
 *.swp
-/public/javascript/client/config.js
+public/javascript/client/config.js

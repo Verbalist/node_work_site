@@ -11,7 +11,7 @@ var employee = require('./routes/employee');
 var employer = require('./routes/employer');
 var search = require('./routes/search');
 var auth = require('./routes/auth');
-var api = require('./routes/api');
+var api_auth = require('./routes/api_auth');
 var api_employer = require('./routes/api_employer');
 var api_employee = require('./routes/api_employee');
 var app = express();
@@ -44,6 +44,8 @@ app.use('/auth', auth);
 app.use('/search', search);
 app.use('/api', api_employee);
 app.use('/api', api_employer);
+app.use('/api', api_auth);
+
 
 
 // catch 404 and forward to error handler

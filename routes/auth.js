@@ -3,20 +3,20 @@ var router = express.Router();
 
 /* GET login */
 router.get('/login', function(req, res, next) {
-	console.log('auth/login')
-  res.render('auth/login', {title: 'login'});
+	console.log('front auth/login')
+  res.render('auth/login', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
 /* GET registration */
 router.get('/registration', function(req, res, next) {
 	console.log('auth/registration')
-  res.render('auth/registration', {title: 'registration'});
+  res.render('auth/registration', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
 /* GET restorepass */
 router.get('/restorepass', function(req, res, next) {
 	console.log('auth/restorepass')
-  res.render('auth/restorepass', {title: 'restorepass'});
+  res.render('auth/restorepass', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
 module.exports = router;
