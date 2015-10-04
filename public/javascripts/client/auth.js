@@ -9,3 +9,7 @@ function registrationHandler(login, email, pass, pass2) {
 	else:
 		$(#hint).html = 'не совпадают пароли'
 }
+
+function restorePasswordHandler(email) {
+	jsonSend()
+}

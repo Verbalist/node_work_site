@@ -2,3 +2,4 @@
 *.log
 *.*~
 *.swp
+/public/javascript/client/config.js

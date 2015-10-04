@@ -24,7 +24,6 @@ function showProfileSettings(){
     console.log("showProfileSettings - Started!!!");    
 }
 
-
 function addResumeEmployee(){
     console.log("addresumeemployee - started!!!");
     

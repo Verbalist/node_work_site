@@ -1,4 +1,4 @@
-{% extends '../layout/layout.html' %}
+<!-- {% extends '../layout/layout.html' %}
 
 {% block content %} 
 	<h1>Логин</h1>
@@ -11,3 +11,21 @@
 	</form>
 
 {% endblock %}
+ -->
+
+<% layout('../layout/layout') -%>
+<h1>Edit resume</h1>
+<div id="edit_resume_from_wrapper">
+
+</div>
+
+ <% include ../templates/editResumeEmployee %>
+
+<script type="text/javascript">
+    initResume();
+</script>
+
+<% stylesheet('/stylesheets/client/employee.css') -%>
+
+<% script('/javascripts/client/employee.js') -%>   
+<% script('/javascripts/view/employee.js') -%>     

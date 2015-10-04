@@ -1,3 +1,3 @@
-var path = "http://localhost:3000";
+var path = "http://localhost";
 var restPath  = "/api";
 var employeePath = "/employee";
