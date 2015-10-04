@@ -1,8 +1,8 @@
 <% layout('../layout/layout') -%>
 <h1>Create new resume</h1>
 <div id="create_resume_from_wrapper">
-	
-	<form class="form-horizontal" action="" method="post" autocomplete="on" onsubmit="return false">
+	<form id="resume_employee_addition_form" class="form-horizontal" autocomplete="on"
+              onsubmit="addResumeEmployee();return false">
 		
 		<div id="form_element_wrapper">
             <label id="name_label">
@@ -53,5 +53,17 @@
             <input type="textarea" name="salary" id="input_salary_new">
         </div>
 
+         <div id="submit_resume_new_wrapper" class="form-group">
+             <div class="">
+                <button id="submit_resume_new" name="submit_resume" class="btn btn-info" type="submit">
+                    <span class=""></span> Save
+                </button>
+            </div>
+        </div>
 	</form>
 </div>
+
+<% stylesheet('/stylesheets/client/employee.css') -%>
+
+<% script('/javascripts/client/employee.js') -%>   
+<% script('/javascripts/view/employee.js') -%>   

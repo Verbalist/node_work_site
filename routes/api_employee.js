@@ -63,13 +63,28 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
 	console.log(req.body)
 
 	//some logic
-	
+	var options = {
+	  uri: 'http://localhost:9000/test',
+	  //type: 'Content-Type: application/json',
+	  method: 'POST',
+	  json: {
+	    "name": "Ivan"
+	  }
+	};
+//curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz"}' http://localhost:9000/test
+	request(options, function (error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	    console.log(body) // Print the shortened url.
+	  }
+	});
+	console.log("done");
+
 	result.error_code = 0;
   res.json(result);
 });
 
-router.post('/employee/addResumes/', function(req, res, next) {
-	console.log('/employee/addResumes/')
+router.post('/employee/addResumes', function(req, res, next) {
+	console.log('/employee/addResumes')
 	var result = {};
 	
 	console.log(req.body)

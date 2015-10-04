@@ -19,7 +19,7 @@ function doRequestAjaxPost (requestJson, URL, async){
 }
 
 function doRequestAjaxPostEmployee (requestJson, URL, method, async){
-
+    console.log(path + restPath + employeePath + URL);
     return $.ajax({
         url: path + restPath + employeePath + URL,
         type: method,

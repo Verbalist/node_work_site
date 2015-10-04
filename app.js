@@ -42,7 +42,6 @@ app.use('/employee', employee);
 app.use('/employer', employer);
 app.use('/auth', auth);
 app.use('/search', search);
-app.use('/api', api);
 app.use('/api', api_employee);
 app.use('/api', api_employer);
 

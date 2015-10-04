@@ -27,43 +27,43 @@ function showProfileSettings(){
 
 function addResumeEmployee(){
     console.log("addresumeemployee - started!!!");
-
+    
     var requestArray = {};
     
-    var serializedArray = $("#add_resume_employee_form").serializeArray();
+    var serializedArray = $("#resume_employee_addition_form").serializeArray();
     
     for (var i in serializedArray) {
         requestArray[serializedArray[i].name] = serializedArray[i].value;
     }
 
 
-    var url = "/addResumes";
+    var URL = "/addResume";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST",false).responseJSON;
 
     var serverErrorLabel = $('<label/>', {
                     id: 'server_connection_error',
-                        "class": 'user-server-error'
+                    "class": 'user-server-error'
                 });
 
     if (result !== undefined) {
         if (result.error_code != 0) {
-            console.log("error code = " + result.error_code);
+            console.log("Error code = " + result.error_code);
 
             switch (result.error_code) {
                     case 403:
-                        serverErrorLabel.text("add resume error ");
-                        serverErrorLabel.appendto('#add_resume_employee_error_wrapper');
+                        serverErrorLabel.text("Update resume error ");
+                        serverErrorLabel.appendTo('#update_resume_employee_error_wrapper');
                         break;
             }
 
         }
     } else {
-        console.log("server connection error");
+        console.log("Server connection error");
     }
 
     return result;
