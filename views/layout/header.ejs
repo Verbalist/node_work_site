@@ -19,13 +19,17 @@
     <% } %>
   </ul>
   <ul class="nav navbar-nav navbar-right">
-    <% if (auth == true) { %>
+    <% if (auth == 'true') { %>
       <li>      
         <a href="#">{{name}}</a>
         <img src="#">{{avatar}}>
       </li>
-    <% } else {%>
-      <li><a href="/login">login</a></li>
+      <li>
+        <a href="/auth/logout">Logout</a>
+      </li>
+    <% } else { %>
+      <li><a href="/auth/login">Login</a></li>
+      <li><a href="/auth/registration">Sing In</a></li>
     <% } %>
   </ul>
 </div><!--/.nav-collapse -->
