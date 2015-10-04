@@ -12,6 +12,16 @@ function initResume(){
     $("#edit_resume_from_wrapper").append(html);
 }
 
+function initProfile(){
+    var uri = window.location.href;
+    console.log(uri.split("/").slice(-2,-1)[0]);
+    var response = getProfileByNameEmployee(uri.split("/").slice(-2,-1)[0])
+    var template = $("#editProfileEmployee").html();
+    console.log(response);
+    var html = Mustache.render(template, response.profile);
+    $("#profile_from_wrapper").append(html);
+}
+
 function showResumeSettings(){
     console.log("showResumeSettings - Started!!!");    
 }
@@ -190,11 +200,12 @@ function deleteResumeEmployee(resume_id){
 }
 
 
-function getProfileEmployee(){
+function getProfileByNameEmployee(name){
     console.log("getProfileEmployee - Started!!!");
 
 
     var requestArray = {};
+    requestArray.name = name;
     
     var URL = "/profile";
 
@@ -215,7 +226,7 @@ function getProfileEmployee(){
     return result;
 }
 
-function updateProfileEmployee(){
+function updateProfileEmployee(employee_id){
     console.log("updateProfileEmployee - Started!!!");
 
     var requestArray = {};
@@ -227,7 +238,7 @@ function updateProfileEmployee(){
     }
 
 
-    var URL = "/updateProfile";
+    var URL = "/updateProfile/" + employee_id;
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 

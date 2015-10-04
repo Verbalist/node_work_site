@@ -71,7 +71,7 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
 	    "name": "Ivan"
 	  }
 	};
-//curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz"}' http://localhost:9000/test
+	//curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz"}' http://localhost:9000/test
 	request(options, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
 	    console.log(body) // Print the shortened url.
@@ -83,8 +83,8 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
   res.json(result);
 });
 
-router.post('/employee/addResumes', function(req, res, next) {
-	console.log('/employee/addResumes')
+router.post('/employee/addResume', function(req, res, next) {
+	console.log('/employee/addResume')
 	var result = {};
 	
 	console.log(req.body)
@@ -101,7 +101,7 @@ router.get('/employee/profile', function(req, res, next) {
 	var result = {};
 
 	//some logic
-	var profile_info = [
+	var profile = 
 		{
 			"id":"1",
 			"name":"John",
@@ -110,15 +110,14 @@ router.get('/employee/profile', function(req, res, next) {
 			"email":"example@gmail.com",
 			"phone":"1234567"
 		}
-	]
 	result.error_code = 0;
-	result.profile_info = profile_info;
+	result.profile = profile;
 
 	console.log(result);
   res.json(result);
 });
 
-router.post('/employee/updateProfile', function(req, res, next) {
+router.post('/employee/updateProfile/:id', function(req, res, next) {
 	console.log('/employee/updateProfile')
 	var result = {};
 
