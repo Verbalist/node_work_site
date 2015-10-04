@@ -3,6 +3,16 @@ function errorText(error_text,error_template){
     this.error_template = error_template;
 }
 
+function initPosition(){
+    var uri = window.location.href;
+    console.log(uri.split("/").pop());
+    var response = getPositionByIdEmployer(uri.split("/").pop())
+    var template = $("#editResumeEmployer").html();
+    console.log(response);
+    var html = Mustache.render(template, response.resume);
+    $("#edit_position_from_wrapper").append(html);
+}
+
 function showPositionSettings(){
     console.log("showPositionSettings - Started!!!");    
 }
@@ -38,6 +48,22 @@ function checkUndefined(result,error_obj){
     } else {
         console.log("Server connection error");
     }
+}
+
+function getPositionByIdEmployer(resume_id){
+    console.log("getPositionByIdEmployer - Started!!!");
+
+    var requestArray = {};
+    
+    var URL = "/position/" + resume_id;
+
+    var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
+
+    //  Send request
+
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
+    checkUndefined(result);
+    return result;
 }
 
 function findEmployerById(employer_id){
@@ -92,6 +118,8 @@ function createPosition(employer_id){
 
     return result;
 }
+
+
 
 function editPosition(employer_id){
     console.log("editPosition - Started!!!");
