@@ -27,17 +27,15 @@ router.get('/employer/position/:id', function(req, res, next) {
 	var result = {};
 
 	//some logic
-	var positions = [
-		{
+	var position ={
 			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
 			"requirements":"html, css",
 			"location":"Kyiv"
-		}
-	]
+		};
 	result.error_code = 0;
-	result.positions = positions;
+	result.position = position;
 
 	console.log(result);
   res.json(result);
@@ -83,16 +81,14 @@ router.get('/employer/profile', function(req, res, next) {
 	var result = {};
 
 	//some logic
-	var profile_info = [
-		{
+	var profile_info = {
 			"id":"1",
 			"name":"BigCompany",
 			"category":"it",
 			"status":"looking for slaves",
 			"email":"example@gmail.com",
 			"phone":"1234567"
-		}
-	]
+		};
 	result.error_code = 0;
 	result.profile_info = profile_info;
 
