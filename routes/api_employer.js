@@ -35,7 +35,7 @@ router.get('/employer/position/:id', function(req, res, next) {
 			"requirements":"html, css",
 			"location":"Kyiv"
 		}
-
+	]
 	result.error_code = 0;
 	result.positions = positions;
 
