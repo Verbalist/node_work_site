@@ -22,30 +22,29 @@ router.get('/employer/positions', function(req, res, next) {
   res.json(result);
 });
 
-router.get('/employee/resume/:id', function(req, res, next) {
-	console.log('/employee/resumes/' + req.params.id)
+router.get('/employer/position/:id', function(req, res, next) {
+	console.log('/employer/position/' + req.params.id)
 	var result = {};
 
 	//some logic
-	var resume = {
+	var positions = [
+		{
 			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
-			"skills":"html, css",
-			"experience":"over 9001 hours",
-			"education":"full",
-			"salary":"1m dollars"
+			"requirements":"html, css",
+			"location":"Kyiv"
 		}
 
 	result.error_code = 0;
-	result.resume = resume;
+	result.positions = positions;
 
 	console.log(result);
   res.json(result);
 });
 
-router.post('/employee/deleteResumes/:id', function(req, res, next) {
-	console.log('/employee/deleteResumes/' + req.params.id)
+router.post('/employer/deletePositions/:id', function(req, res, next) {
+	console.log('/employer/deletePositions/' + req.params.id)
 	var result = {};
 	
 	//some logic
@@ -54,20 +53,8 @@ router.post('/employee/deleteResumes/:id', function(req, res, next) {
   res.json(result);
 });
 
-router.post('/employee/updateResumes/:id', function(req, res, next) {
-	console.log('/employee/updateResumes/' + req.params.id)
-	var result = {};
-	
-	console.log(req.body)
-
-	//some logic
-	
-	result.error_code = 0;
-  res.json(result);
-});
-
-router.post('/employee/addResumes/', function(req, res, next) {
-	console.log('/employee/addResumes/')
+router.post('/employer/updatePositions/:id', function(req, res, next) {
+	console.log('/employer/updatePositions/' + req.params.id)
 	var result = {};
 	
 	console.log(req.body)
@@ -78,18 +65,30 @@ router.post('/employee/addResumes/', function(req, res, next) {
   res.json(result);
 });
 
+router.post('/employer/addPositions/', function(req, res, next) {
+	console.log('/employer/addPositions/')
+	var result = {};
+	
+	console.log(req.body)
 
-router.get('/employee/profile', function(req, res, next) {
-	console.log('/employee/profile')
+	//some logic
+	
+	result.error_code = 0;
+  res.json(result);
+});
+
+
+router.get('/employer/profile', function(req, res, next) {
+	console.log('/employer/profile')
 	var result = {};
 
 	//some logic
 	var profile_info = [
 		{
 			"id":"1",
-			"name":"John",
+			"name":"BigCompany",
 			"category":"it",
-			"status":"looking for job",
+			"status":"looking for slaves",
 			"email":"example@gmail.com",
 			"phone":"1234567"
 		}
@@ -101,8 +100,8 @@ router.get('/employee/profile', function(req, res, next) {
   res.json(result);
 });
 
-router.post('/employee/updateProfile', function(req, res, next) {
-	console.log('/employee/updateProfile')
+router.post('/employer/updateProfile', function(req, res, next) {
+	console.log('/employer/updateProfile')
 	var result = {};
 
 	console.log(req.body)
@@ -115,8 +114,8 @@ router.post('/employee/updateProfile', function(req, res, next) {
   res.json(result);
 });
 
-router.post('/employee/deleteCustomer', function(req, res, next) {
-	console.log('/employee/deleteCustomer' + req.params.id)
+router.post('/employer/deleteCustomer', function(req, res, next) {
+	console.log('/employer/deleteCustomer' + req.params.id)
 	var result = {};
 	
 	//some logic
