@@ -40,12 +40,20 @@ router.get('/employee/resume/:id', function(req, res, next) {
 			"education":"full",
 			"salary":"1m dollars"
 		}
-
+/*
+	console.log(req.body)
+	result = requestMaker.send('/employee/resume', req.params);
+	console.log(result);	
+	//some logic
+	if(result !== undefined)
+		result.error_code = 0;
+  	res.json(result);
+*/
 	result.error_code = 0;
 	result.resume = resume;
 
 	console.log(result);
-  res.json(result);
+  	res.json(result);
 });
 
 router.post('/employee/deleteResumes/:id', function(req, res, next) {
@@ -63,8 +71,9 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
 	var result = {};
 	
 	console.log(req.body)
-	result = requestMaker.send('/employee/updateResume', req.params);
-	console.log(result);	
+	result = JSON.parse(requestMaker.send('/employee/updateResume', req.params));
+	console.log(result.id);
+	console.log(result.message);	
 	//some logic
 	if(result !== undefined)
 		result.error_code = 0;

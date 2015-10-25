@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('sync-request');
 
 function RequestMaker(){
 	this.remoteHost = 'http://localhost:9000';
@@ -9,6 +9,11 @@ RequestMaker.prototype.send = function(uri, reqjson){
 
 	console.log(this.remoteHost + uri);
 	var options = {
+		json: reqjson
+	}
+	var response = request(this.requestType, this.remoteHost + uri, options);
+
+	/*var options = {
 	  uri: this.remoteHost + uri,
 	  //type: 'Content-Type: application/json',
 	  method: this.requestType,
@@ -20,8 +25,9 @@ RequestMaker.prototype.send = function(uri, reqjson){
 	  	console.log(body);
 	    return body;
 	  }
-	});
+	});*/
 	console.log("done");
+	return response.getBody('utf8');
 }
 
 
