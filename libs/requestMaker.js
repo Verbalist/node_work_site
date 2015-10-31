@@ -1,17 +1,35 @@
-var request = require('sync-request');
-
+// var request = require('sync-request');
+var rp = require('request-promise');
 function RequestMaker(){
 	this.remoteHost = 'http://localhost:9000';
 	this.requestType = 'POST';
 }
+RequestMaker.prototype.post = function(uri, reqjson, callback){
+		console.log(this.remoteHost + uri);
+		try {
+			rp({
+				method: 'POST', 
+				uri: this.remoteHost + uri,
+				json: true,
+				body: reqjson
+			}).then(function(data) { 
+				callback(data);
+			}).catch(function(e) {
+				console.log('pre_fatal request error', e)
+				callback({error_code: 2});
+			});
+		} catch (e){
+			console.log('fatal request error', e)
+			callback({error_code: 2});
+		}
+}
+module.exports = new RequestMaker();
 
-RequestMaker.prototype.send = function(uri, reqjson){
 
-	console.log(this.remoteHost + uri);
-	var options = {
-		json: reqjson
-	}
-	var response = request(this.requestType, this.remoteHost + uri, options);
+	// var options = {
+	// 	json: reqjson
+	// }
+	// var response = request(this.requestType, this.remoteHost + uri, options);
 
 	/*var options = {
 	  uri: this.remoteHost + uri,
@@ -26,9 +44,8 @@ RequestMaker.prototype.send = function(uri, reqjson){
 	    return body;
 	  }
 	});*/
-	console.log("done");
-	return response.getBody('utf8');
-}
 
 
-module.exports = new RequestMaker();
+
+	// console.log("done");
+	// return response.getBody('utf8');
