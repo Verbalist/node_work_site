@@ -68,16 +68,11 @@ router.post('/employee/deleteResumes/:id', function(req, res, next) {
 
 router.post('/employee/updateResumes/:id', function(req, res, next) {
 	console.log('/employee/updateResumes/' + req.params.id)
-	var result = {};
-	
-	console.log(req.body)
-	result = JSON.parse(requestMaker.send('/employee/updateResume', req.params));
-	console.log(result.id);
-	console.log(result.message);	
-	//some logic
-	if(result !== undefined)
-		result.error_code = 0;
-  	res.json(result);
+	requestMaker.send('/employee/updateResume', req.params, 
+		function (result) {
+		  	res.json(result);
+  	});
+
 });
 
 router.post('/employee/addResume', function(req, res, next) {
