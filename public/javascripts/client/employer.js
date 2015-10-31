@@ -7,7 +7,7 @@ function initPosition(){
     var uri = window.location.href;
     console.log(uri.split("/").pop());
     var response = getPositionByIdEmployer(uri.split("/").pop())
-    var template = $("#editResumeEmployer").html();
+    var template = $("#editPositionEmployer").html();
     console.log(response);
     var html = Mustache.render(template, response.position);
     $("#edit_position_from_wrapper").append(html);
