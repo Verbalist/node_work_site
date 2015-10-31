@@ -7,10 +7,20 @@ function initPosition(){
     var uri = window.location.href;
     console.log(uri.split("/").pop());
     var response = getPositionByIdEmployer(uri.split("/").pop())
-    var template = $("#editResumeEmployer").html();
+    var template = $("#editPositionEmployer").html();
     console.log(response);
-    var html = Mustache.render(template, response.resume);
+    var html = Mustache.render(template, response.position);
     $("#edit_position_from_wrapper").append(html);
+}
+
+function initEmployerProfile(){
+    var uri = window.location.href;
+    console.log(uri.split("/").slice(-2,-1)[0]);
+    var response = getProfileByIdEmployer(uri.split("/").slice(-2,-1)[0])
+    var template = $("#editProfileEmployer").html();
+    console.log(response);
+    var html = Mustache.render(template, response.profile_info);
+    $("#employer_profile_from_wrapper").append(html);
 }
 
 function showPositionSettings(){
@@ -61,7 +71,7 @@ function getPositionByIdEmployer(resume_id){
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
+    var result = doRequestAjaxPostEmployer(requestBody, URL, "GET", false).responseJSON;
     checkUndefined(result);
     return result;
 }
@@ -84,7 +94,7 @@ function findEmployerById(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"));
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error")));
 
     return result;
 }
@@ -112,9 +122,9 @@ function createPosition(employer_id){
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployer(requestBody, URL,"POST", false).responseJSON;
 
-    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error")),template_string);
 
     return result;
 }
@@ -145,36 +155,32 @@ function editPosition(employer_id){
 
     var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
 
-    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error")));
     
     return result;
 }
 
-function getProfileEmployer(employer_id){
+function getProfileByIdEmployer(employer_id){
     console.log("getProfileEmployer - Started!!!");
     template_string = "#employer_profile_from_wrapper"
-    var serializedArray = $(template_string).serializeArray();
 
     //  Prepare JSON and settings
 
-    var requestArray = {
-        "employer_id" : employer_id
-    };
+    var requestArray = {};
+    requestArray.employer_id = employer_id;
 
-    var URL = "/editPosition";
+    var URL = "/profile";
 
 
-    for (var i in serializedArray) {
-        requestArray[serializedArray[i].name] = serializedArray[i].value;
-    }
 
+    console.log(requestArray);
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPost(requestBody, URL, false).responseJSON;
+    var result = doRequestAjaxPostEmployer(requestBody, URL, "GET", false).responseJSON;
 
-    checkUndefined(result, new errorText(arguments.callee.toString().concat("error"),template_string);
+    checkUndefined(result, new errorText(arguments.callee.toString().concat("error")));
     
     return result;
 }

@@ -1,41 +1,17 @@
 <% layout('../layout/layout') -%>
-	<h1>Profile</h1>
-	<div id="employer_profile_from_wrapper">
-		
-		<form class="form-horizontal" action="" method="post" autocomplete="on" onsubmit="return false">
-			
-			<div id="form_element_wrapper">   
-	            <label id="description_label">
-	            	Description
-	            </label>
 
-	            <input type="textarea" name="description" id="input_description">
-            </div>
+<h1>Profile</h1>
+<div id="employer_profile_from_wrapper">
 
-            <div id="form_element_wrapper">
-	            <label id="requirements_label">
-	            	Requirements
-	            </label>
+</div>
 
-	            <input type="textarea" name="requirements" id="input_requirements">
-            </div>
+<% include ../templates/editProfileEmployer %>
 
+<script type="text/javascript">
+    initEmployerProfile();
+</script>
 
-			<div id="form_element_wrapper">
-	            <label id="salary_label">
-	            	Salary
-	            </label>
+<% stylesheet('/stylesheets/client/employer.css') -%>
 
-	            <input type="textarea" name="salary" id="input_salary">
-            </div>
-
-            <div id="form_element_wrapper">
-	            <label id="location_label">
-	            	Location
-	            </label>
-
-	            <input type="textarea" name="experience" id="location_experience">
-            </div>
-
-		</form>
-	</div>
+<% script('/javascripts/client/employer.js') -%>   
+<% script('/javascripts/view/employer.js') -%>  
