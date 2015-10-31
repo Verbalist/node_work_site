@@ -11,8 +11,17 @@ router.get('/employer/positions', function(req, res, next) {
 			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
+			"salary":"100500$",
 			"requirements":"html, css",
 			"location":"Kyiv"
+		},
+		{
+			"id":"2",
+			"name":"Deer",
+			"description":"designer",
+			"salary":"15$",
+			"requirements":"paint",
+			"location":"Zhmerynka"
 		}
 	]
 	result.error_code = 0;
@@ -31,6 +40,7 @@ router.get('/employer/position/:id', function(req, res, next) {
 			"id":"1",
 			"name":"programmer",
 			"description":"super programmer",
+			"salary":"100500$",
 			"requirements":"html, css",
 			"location":"Kyiv"
 		};
