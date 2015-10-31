@@ -1,5 +1,16 @@
 <% layout('../layout/layout') -%>
 	<h1>Positions</h1>
 	<div id="positions_list_wrapper">
-		
+
+		<form><input id="limit" type="text" value="1"> <input id="start" type="text" value="10"></form>
 	</div>
+ <% include ../templates/showPositions %>
+
+<script type="text/javascript">
+    showPositions();
+</script>
+
+<% stylesheet('/stylesheets/client/employer.css') -%>
+
+<% script('/javascripts/client/employer.js') -%>
+<% script('/javascripts/view/employer.js') -%>gt

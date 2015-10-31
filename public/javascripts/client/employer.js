@@ -29,6 +29,20 @@ function showPositionSettings(){
 
 function showPositions(){
     console.log("showPositions - Started!!!");    
+    var url = window.location.href;
+    var split_url = url.split("/");
+    console.log(split_url[split_url.length-2]);
+    employer_name = split_url[split_url.length-2];
+    limit = $('#limit')[0].value;
+    start = $('#start')[0].value;
+    var response = getPositionsEmployer(employer_name, limit, start);
+    var template = $("#showPositionsEmployer").html();
+    console.log(response);
+    for(var elem in response.positions){
+        var html = Mustache.render(template, response.positions[elem]);
+        $("#positions_list_wrapper").append(html);
+    }
+    
 }
 
 function showProfileSettings(){
@@ -66,6 +80,24 @@ function getPositionByIdEmployer(resume_id){
     var requestArray = {};
     
     var URL = "/position/" + resume_id;
+
+    var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
+
+    //  Send request
+
+    var result = doRequestAjaxPostEmployer(requestBody, URL, "GET", false).responseJSON;
+    checkUndefined(result);
+    return result;
+}
+
+function getPositionsEmployer(id, limit, start){
+    console.log("getPositionByIdEmployer - Started!!!");
+
+    var requestArray = {};
+    requestArray.limit = limit;
+    requestArray.start = start;
+
+    var URL = "/positions";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
