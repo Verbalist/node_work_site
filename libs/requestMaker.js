@@ -1,11 +1,11 @@
 // var request = require('sync-request');
 var rp = require('request-promise');
 function RequestMaker(){
-	this.remoteHost = 'http://localhost:9000';
+	this.remoteHost = 'http://localhost:8000';
 	this.requestType = 'POST';
 }
 RequestMaker.prototype.post = function(uri, reqjson, callback){
-		console.log(this.remoteHost + uri);
+		console.log('backrequest' + this.remoteHost + uri);
 		try {
 			rp({
 				method: 'POST', 

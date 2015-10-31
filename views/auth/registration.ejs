@@ -1,15 +1,20 @@
 <% layout('../layout/layout') -%>
 
 <h1>Registration</h1>
-<form>
+<form method="POST" action="/api/auth/registration">
     <label>login</label><br>
     <input type="text" name="login" value="login"><br>
     <label>email</label><br>
     <input type="text" name="email" value="example@mail.com"><br>
-    <label>password</label><br>
+    <label>Who are you?</label><br>
+	<select name="role">
+	  <option value="employee" selected>Employee</option>
+	  <option value="employer">Employer</option>
+	</select>    
+	<label>password</label><br>
     <input type="password" name="password" value="password"><br>
-    <label>again password</label><br>
-    <input type="password" name="password" value="password"><br><br>
+    <!-- <label>again password</label><br>
+    <input type="password" name="password" value="password"><br><br> -->
     <input type="submit" value="Отправить">
 </form>
 <% stylesheet('/stylesheets/client/employee.css') -%>
