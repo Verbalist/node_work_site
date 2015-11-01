@@ -1,5 +1,5 @@
 var pg = require('pg');
-var conString = "postgres://postgres:1111@localhost:5432/work_users";
+var conString = "postgres://root:qweasdzxc@192.81.222.48:5432/work_users";
 
 function query(SQLquery, args, resolve) {
   pg.connect(conString, function(err, client, done) {
