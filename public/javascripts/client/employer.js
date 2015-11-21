@@ -33,8 +33,10 @@ function showPositions(){
     var split_url = url.split("/");
     console.log(split_url[split_url.length-2]);
     employer_name = split_url[split_url.length-2];
-    limit = $('#limit')[0].value;
-    start = $('#start')[0].value;
+    page_number = $('#page_number')[0].value;
+    positions_per_page = $('#positions_per_page')[0].value;
+    start = (page_number-1)*positions_per_page;
+    limit = positions_per_page;
     var response = getPositionsEmployer(employer_name, limit, start);
     var template = $("#showPositionsEmployer").html();
     console.log(response);
@@ -97,13 +99,12 @@ function getPositionsEmployer(id, limit, start){
     requestArray.limit = limit;
     requestArray.start = start;
 
-    var URL = "/positions";
+    var URL = "/"+id+"/positions";
 
-    var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
-
+     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
     //  Send request
 
-    var result = doRequestAjaxPostEmployer(requestBody, URL, "GET", false).responseJSON;
+    var result = doRequestAjaxPostEmployer(requestBody, URL, "POST", false).responseJSON;
     checkUndefined(result);
     return result;
 }

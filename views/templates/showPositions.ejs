@@ -1,21 +1,27 @@
 <script type="text/html" id="showPositionsEmployer">
-
-	<form id="positions_employer_show_form" class="form-horizontal" action="" method="post" autocomplete="on" onsubmit="return false">
-			<div id="form_element_wrapper">
-	            <textarea value="{{name}}">
+	<br>
+	<div  class="panel panel-primary" id="positions_employer_show_form">
+		
+			<div class="panel-heading">
+	            <span>{{name}}</span>
 	      	</div>
-	      	<div id="form_element_wrapper">
-	            <textarea value="{{description}}">
-	      	</div>
-	      	<div id="form_element_wrapper">
-	            <textarea value="{{requirements}}">
-	      	</div>
-	      	<div id="form_element_wrapper">
-	            <textarea value="{{salary}}">
-	      	</div>
-	      	<div id="form_element_wrapper">
-	            <textarea value="{{location}}">
-	      	</div>
-    </form>
-
+	    <ul class="list-group">
+	      	<li class="list-group-item">
+	      		<span class="label label-info">Description</span>
+	            <span>{{description}}</span>
+	      	</li>
+	      	<li class="list-group-item">
+	      		<span class="label label-info">Requirements</span>
+	            <span>{{requirements}}</span>
+	      	</li>
+	      	<li class="list-group-item">
+	      		<span class="label label-success">Salary</span>
+	            <span>{{salary}}</span>
+	      	</li>
+	      	<li class="list-group-item">
+	      		<span class="label label-info">Location</span>
+	            <span>{{location}}</span>
+	      	</li>
+	    </ul>
+    </div>
 </script>

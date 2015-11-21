@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/employer/positions', function(req, res, next) {
-	console.log('/employer/positions')
+router.post('/employer/:id/positions', function(req, res, next) {
+	console.log('/employer/:id/positions')
 	var result = {};
-
+	console.log(req.params);
 	//some logic
 	var positions = [
 		{
@@ -26,6 +26,7 @@ router.get('/employer/positions', function(req, res, next) {
 	]
 	result.error_code = 0;
 	result.positions = positions;
+	result.total = 1;
 
 	console.log(result);
   res.json(result);
