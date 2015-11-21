@@ -3,8 +3,8 @@ var request = require('request');
 var router = express.Router();
 var requestMaker = require('../libs/requestMaker.js');
 
-router.get('/employee/resumes', function(req, res, next) {
-	console.log('/employee/resumes')
+router.post('/employee/:id/resumes', function(req, res, next) {
+	console.log('/employee/:id/resumes')
 	var result = {};
 
 	//some logic
@@ -17,10 +17,20 @@ router.get('/employee/resumes', function(req, res, next) {
 			"experience":"over 9000 hours",
 			"education":"full",
 			"salary":"1m dollars"
+		},
+		{
+			"id":"1",
+			"name":"Deer",
+			"description":"super deer",
+			"skills":"moss consumption",
+			"experience":"over 9000 hours",
+			"education":"full",
+			"salary":"1k dollars"
 		}
 	]
 	result.error_code = 0;
 	result.resumes = resumes;
+	result.total = 1;
 
 	console.log(result);
   res.json(result);
