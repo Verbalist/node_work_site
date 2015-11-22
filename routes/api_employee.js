@@ -7,53 +7,33 @@ router.get('/employee/resumes', function(req, res, next) {
 	console.log('/employee/resumes')
 	var result = {};
 
-	//some logic
-	var resumes = [
-		{
-			"id":"1",
-			"name":"programmer",
-			"description":"super programmer",
-			"skills":"html, css",
-			"experience":"over 9000 hours",
-			"education":"full",
-			"salary":"1m dollars"
-		}
-	]
-	result.error_code = 0;
-	result.resumes = resumes;
-
-	console.log(result);
-  res.json(result);
+	console.log("heeey");
+	var request;
+	console.log(request);
+	request.id = "5650b6df82e4f4fa52c3f7b7";
+	
+	requestMaker.post('/employee/getResumes', request, 
+		function (result) {
+			console.log(result)
+		  	res.json(result);
+  	});
 });
 
 router.get('/employee/resume/:id', function(req, res, next) {
 	console.log('/employee/resumes/' + req.params.id)
 	var result = {};
 
-	//some logic
-	var resume = {
-			"id":"1",
-			"name":"programmer",
-			"description":"super programmer",
-			"skills":"html, css",
-			"experience":"over 9001 hours",
-			"education":"full",
-			"salary":"1m dollars"
-		}
-/*
-	console.log(req.body)
-	result = requestMaker.send('/employee/resume', req.params);
-	console.log(result);	
-	//some logic
-	if(result !== undefined)
-		result.error_code = 0;
-  	res.json(result);
-*/
-	result.error_code = 0;
-	result.resume = resume;
-
-	console.log(result);
-  	res.json(result);
+	var request = {
+		id : req.params.id
+	}; 
+	
+	requestMaker.post('/resume/getResume', request, 
+		function (response) {
+			console.log(response)
+		  	result = response;
+  			res.json(result);
+  	});
+  	
 });
 
 router.post('/employee/deleteResumes/:id', function(req, res, next) {
@@ -68,8 +48,18 @@ router.post('/employee/deleteResumes/:id', function(req, res, next) {
 
 router.post('/employee/updateResumes/:id', function(req, res, next) {
 	console.log('/employee/updateResumes/' + req.params.id)
-	requestMaker.send('/employee/updateResume', req.params, 
+
+
+	console.log("heeey");
+	var request = JSON.parse(req.body.json);
+	console.log(request);
+	request.id = req.params.id;
+	request.creator_id = "5650b6df82e4f4fa52c3f7b7";
+	console.log(request);
+
+	requestMaker.post('/resume/updateResume', request, 
 		function (result) {
+			console.log(result)
 		  	res.json(result);
   	});
 
@@ -79,34 +69,35 @@ router.post('/employee/addResume', function(req, res, next) {
 	console.log('/employee/addResume')
 	var result = {};
 	
-	console.log(req.body)
+	console.log(JSON.parse(req.body.json))
 
-	//some logic
-	
-	result.error_code = 0;
-  res.json(result);
+	//var resume = JSON.parse(req.body.json);
+	//resume._id = "3";
+	var request = JSON.parse(req.body.json);
+	request.creator_id = "5650b6df82e4f4fa52c3f7b7";
+
+	try{
+		requestMaker.post('/resume/newResume', request, 
+			function (result) {
+			  	res.json(result);
+	  	});
+	}catch(err){
+		console.log("!!!");
+	}
 });
 
 
 router.get('/employee/profile', function(req, res, next) {
 	console.log('/employee/profile')
-	var result = {};
-
+	
 	//some logic
-	var profile = 
-		{
-			"id":"1",
-			"name":"John",
-			"category":"it",
-			"status":"looking for job",
-			"email":"example@gmail.com",
-			"phone":"1234567"
-		}
-	result.error_code = 0;
-	result.profile = profile;
+	var request = {};
+	request.id = "5650b6df82e4f4fa52c3f7b7";
 
-	console.log(result);
-  res.json(result);
+	requestMaker.post('/employee/getById', request, 
+		function (result) {
+		  	res.json(result);
+  	});
 });
 
 router.post('/employee/updateProfile/:id', function(req, res, next) {

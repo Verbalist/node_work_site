@@ -94,6 +94,7 @@ function updateResumeEmployee(resume_id){
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
+    console.log(requestBody)
     //  Send request
 
     var result = doRequestAjaxPostEmployee(requestBody, URL, "POST",false).responseJSON;
@@ -135,6 +136,8 @@ function getResumeByIdEmployee(resume_id){
     //  Send request
 
     var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
+
+    console.log(result)
 
     if (result !== undefined) {
         if (result.error_code != 0) {

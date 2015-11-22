@@ -5,21 +5,22 @@ function RequestMaker(){
 	this.requestType = 'POST';
 }
 RequestMaker.prototype.post = function(uri, reqjson, callback){
-		console.log('backrequest' + this.remoteHost + uri);
+		console.log(this.remoteHost + uri);
 		try {
 			rp({
 				method: 'POST', 
 				uri: this.remoteHost + uri,
 				json: true,
 				body: reqjson
-			}).then(function(data) { 
+			}).then(function(data) {
+				console.log(data)
 				callback(data);
 			}).catch(function(e) {
-				console.log('pre_fatal request error', e)
+				//console.log('pre_fatal request error', e)
 				callback({error_code: 2});
 			});
 		} catch (e){
-			console.log('fatal request error', e)
+			//console.log('fatal request error', e)
 			callback({error_code: 2});
 		}
 }
