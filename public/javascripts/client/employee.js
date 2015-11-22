@@ -22,8 +22,11 @@ function initProfile(){
     $("#profile_from_wrapper").append(html);
 }
 
-function showResumeSettings(){
-    console.log("showResumeSettings - Started!!!");    
+function showResumeSettings(id){
+    console.log("showResumeSettings - Started!!!");
+    var uri = window.location.href;
+    console.log(uri.split("/").slice(-2,-1)[0]);
+    location.href = "/employee/"+ uri.split("/").slice(-2,-1)[0] + "/resume/" + id;
 }
 
 function showResumes(){
