@@ -28,6 +28,21 @@ function showResumeSettings(){
 
 function showResumes(){
     console.log("showResumes - Started!!!");    
+    var url = window.location.href;
+    var split_url = url.split("/");
+    console.log(split_url[split_url.length-2]);
+    employee_name = split_url[split_url.length-2];
+    page_number = 1;//$('#page_number')[0].value;
+    resumes_per_page = 10;//$('#resumes_per_page')[0].value;
+    start = (page_number-1)*resumes_per_page;
+    limit = resumes_per_page;
+    var response = getResumesEmployee(employee_name, limit, start);
+    var template = $("#showResumesEmployee").html();
+    console.log(response);
+    for(var elem in response.resumes){
+        var html = Mustache.render(template, response.resumes[elem]);
+        $("#resumes_list_wrapper").append(html);
+    }
 }
 
 function showProfileSettings(){
@@ -151,19 +166,21 @@ function getResumeByIdEmployee(resume_id){
     return result;
 }
 
-function getResumesEmployee(){
+function getResumesEmployee(employee_name,limit,start){
     console.log("getResumesEmployee - Started!!!");
 
 
     var requestArray = {};
+    requestArray.limit = limit;
+    requestArray.start = start;
     
-    var URL = "/resumes";
+    var URL = "/"+employee_name+"/resumes";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
     //  Send request
 
-    var result = doRequestAjaxPostEmployee(requestBody, URL, "GET", false).responseJSON;
+    var result = doRequestAjaxPostEmployee(requestBody, URL, "POST", false).responseJSON;
 
     if (result !== undefined) {
         if (result.error_code != 0) {

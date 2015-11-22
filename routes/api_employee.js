@@ -3,18 +3,19 @@ var request = require('request');
 var router = express.Router();
 var requestMaker = require('../libs/requestMaker.js');
 
-router.get('/employee/resumes', function(req, res, next) {
-	console.log('/employee/resumes')
+router.post('/employee/:id/resumes', function(req, res, next) {
+	console.log('/employee/:id/resumes')
 	var result = {};
 
 	console.log("heeey");
-	var request;
+	var request = {};
 	console.log(request);
 	request.id = "5650b6df82e4f4fa52c3f7b7";
 	
 	requestMaker.post('/employee/getResumes', request, 
 		function (result) {
 			console.log(result)
+		  	result.total = 1;
 		  	res.json(result);
   	});
 });

@@ -1,13 +1,53 @@
 <% layout('../layout/layout') -%>
+<div class="page-header">
 	<h1>Positions</h1>
-	<div id="positions_list_wrapper">
+</div>
 
-		<form><input id="limit" type="text" value="1"> <input id="start" type="text" value="10"></form>
-	</div>
- <% include ../templates/showPositions %>
+<% include ../templates/showPositions %>
+
+<div id="positions_list_wrapper">
+
+
+	
+
+</div>
+
+<div>
+<form>
+		<nav>
+		  <ul class="pagination">
+		    <li class="disabled">
+		      <span>
+		        <span aria-hidden="true">&laquo;</span>
+		      </span>
+		    </li>
+		    <li class="active" id="page_number">
+		      <span>1 <span class="sr-only">(current)</span></span>
+		    </li>
+		    <li class="enabled">
+		      <span>
+		        <span aria-hidden="true">&raquo;</span>
+		      </span>
+		    </li>
+		  </ul>
+		</nav>
+		<div class="dropdown">
+			<button id="positions_per_page" class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    10
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="positions_per_page">
+		    <li><a onclick="">10</a></li>
+		    <li><a href="#">20</a></li>
+		    <li><a href="#">50</a></li>
+		  </ul>
+		</div>
+	</form>
+</div>
+
 
 <script type="text/javascript">
-    showPositions();
+	    showPositions();
 </script>
 
 <% stylesheet('/stylesheets/client/employer.css') -%>
