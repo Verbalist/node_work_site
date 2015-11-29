@@ -37,3 +37,26 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
+
+.well-pd-sm{
+  padding-bottom: 5px;
+}
+
+/*.row{
+    display: table;
+    width: 100%; 
+    table-layout: fixed; 
+    border-spacing: 10px; 
+}
+
+.column-sm{
+    display: table-cell;
+    width: 10%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.column-lg{
+    display: table-cell;
+    width:90%;
+}*/

@@ -2,48 +2,69 @@
 
 		<form id="edit_position_settings_form" class="form-horizontal" action="" method="post" autocomplete="on"
                   onsubmit="return false">
-			
-			<div id="form_element_wrapper">
-	            <label id="name_label">
-	            	Name
-	            </label>
 
-	            <input type="text" name="name" id="input_name" value="{{name}}">
+			<div class="col-lg-12 well well-pd-sm">
+    		<div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label id="name_label" class="control-label" for="input_name">Name</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="text" name="name" id="input_name" placeholder="" name="input_name" class="form-control input" value="{{name}}">
+                 </div> 
             </div>
 
-	        <div id="form_element_wrapper">   
-	            <label id="description_label">
-	            	Description
-	            </label>
-
-	            <input type="textarea" name="description" id="input_description" value="{{description}}">
-            </div>
-
-            <div id="form_element_wrapper">
-	            <label id="requirements_label">
-	            	Requirements
-	            </label>
-
-	            <input type="textarea" name="requirements" id="input_requirements" value="{{requirements}}">
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label id="description_label" class="control-label" for="input_description">Description</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="text" name="description" id="input_description" placeholder="" name="input_name" class="form-control input" value="{{description}}">
+                 </div> 
             </div>
 
 
-			<div id="form_element_wrapper">
-	            <label id="salary_label">
-	            	Salary
-	            </label>
-
-	            <input type="textarea" name="salary" id="input_salary" value="{{salary}}">
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="requirements_label">
+                    	Requirements
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="Requirements" id="input_skills" class="form-control input" value="{{requirements}}">
+                 </div> 
+            </div>
+     
+        <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="salary_label">
+                        Salary
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="salary" id="input_salary" class="form-control input" value="{{salary}}">
+                 </div> 
             </div>
 
-            <div id="form_element_wrapper">
-	            <label id="location_label">
-	            	Location
-	            </label>
+        <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="location_label">
+                        Location
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="location" id="location_experience" class="form-control input" value="{{location}}">
+                 </div> 
+        </div>
 
-	            <input type="textarea" name="experience" id="location_experience" value="{{location}}">
+        <div id="submit_profile_edit_wrapper" class="form-group" align="center" style="margin:15px">
+                 <div class="">
+                    <button id="submit_profile_edit" name="submit_profile" class="btn btn-primary btn-lg" type="submit">
+                        <span class=""></span> Save
+                    </button>
+                </div>
             </div>
-		</form>
+        </div>
+    </form>
  
 	    
 </script>

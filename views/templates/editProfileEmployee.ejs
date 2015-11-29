@@ -2,53 +2,63 @@
 	
 	<form id="profile_employee_settings_form" class="form-horizontal" autocomplete="on"
               onsubmit="updateProfileEmployee('{{id}}');return false">
-        
-        <div id="form_element_wrapper">
-            <label id="name_label">
-                Name
-            </label>
 
-            <input type="text" name="name" id="input_name" value="{{name}}">
-        </div>
-
-        <div id="form_element_wrapper">   
-            <label id="category_label">
-                Category
-            </label>
-
-            <input type="textarea" name="category" id="input_category" value="{{category}}">
-        </div>
-
-        <div id="form_element_wrapper">
-            <label id="status_label">
-                Status
-            </label>
-
-            <input talaryype="textarea" name="status" id="input_status" value="{{status}}">
-        </div>
-
-        <div id="form_element_wrapper">
-            <label id="email_label">
-                Email
-            </label>
-
-            <input type="textarea" name="email" id="input_email" value="{{email}}">
-        </div>
-
-        <div id="form_element_wrapper">
-            <label id="phone_label">
-                Phone
-            </label>
-
-            <input type="textarea" name="phone" id="input_phone" value="{{phone}}">
-        </div>
-
-        <div id="submit_profile_edit_wrapper" class="form-group">
-             <div class="">
-                <button id="submit_profile_edit" name="submit_profile" class="btn btn-info" type="submit">
-                    <span class=""></span> Save
-                </button>
+        <div class="col-lg-12 well well-pd-sm">
+            <div id="form_element_wrapper" class = "control-group row" style="margin:5px">
+                <div class="col-md-2">
+                    <label id="name_label" class="control-label" for="input_name">Name</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="text" name="name" id="input_name" placeholder="" name="input_name" class="form-control input" value="{{name}}">
+                 </div> 
             </div>
+
+            <div id="form_element_wrapper" class = "control-group row" style="margin:5px">             
+                <div class="col-md-2">
+                    <label id="category_label" class="control-label" for="input_name">Category</label>
+                </div>
+                <div class="controls col-md-10" class="col-md-10">             
+                <input type="text" id="input_name" placeholder="" name="category_name" class="form-control input" value="{{category}}">              
+                </div>          
+            </div> 
+
+
+            <div id="form_element_wrapper" class = "control-group row" style="margin:5px">             
+                <div class="col-md-2">
+                    <label id="status_label" class="control-label" for="input_name">Status</label>
+                </div>
+                <div class="controls col-md-10" class="col-md-10">             
+                <input type="text" id="input_status" placeholder="" name="status" class="form-control input" value="{{status}}">              
+                </div>          
+            </div> 
+
+
+            <div id="form_element_wrapper" class = "control-group row" style="margin:5px">             
+                <div class="col-md-2">
+                    <label id="email_label" class="control-label" for="email_name">Email</label>
+                </div>
+                <div class="controls col-md-10">             
+                <input type="text" name="status" id="email_name" placeholder="" name="email_name" class="form-control input" value="{{email}}">                     
+                </div>          
+            </div>
+
+            <div id="form_element_wrapper" class = "control-group row" style="margin:5px">             
+                <div class="col-md-2">
+                    <label id="phone_label" class="control-label" for="phone_name">Phone</label>
+                </div>
+                <div class="controls col-md-10">             
+                <input type="text" name="phone" id="input_phone" placeholder="" name="phone" class="form-control input" value="{{phone}}">                       
+                </div>          
+            </div>
+
+            <div id="submit_profile_edit_wrapper" class="form-group" align="center" style="margin:15px">
+                 <div class="">
+                    <button id="submit_profile_edit" name="submit_profile" class="btn btn-primary btn-lg" type="submit">
+                        <span class=""></span> Save
+                    </button>
+                </div>
+            </div>
+
         </div>
     </form>
 	    

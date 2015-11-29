@@ -3,61 +3,75 @@
 <div id="create_resume_from_wrapper">
 	<form id="resume_employee_addition_form" class="form-horizontal" autocomplete="on"
               onsubmit="addResumeEmployee();return false">
-		
-		<div id="form_element_wrapper">
-            <label id="name_label">
-            	Name
-            </label>
+        <div class="col-lg-12 well well-pd-sm">
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label id="name_label" class="control-label" for="input_name">Name</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="text" name="name" id="input_name" placeholder="" name="input_name" class="form-control input">
+                 </div> 
+            </div>
 
-            <input type="text" name="name" id="input_name_new">
-        </div>
-
-        <div id="form_element_wrapper">   
-            <label id="description_label">
-            	Description
-            </label>
-
-            <input type="textarea" name="description" id="input_description_new">
-        </div>
-
-        <div id="form_element_wrapper">
-            <label id="skills_label">
-            	Skills
-            </label>
-
-            <input type="textarea" name="skills" id="input_skills_new">
-        </div>
-
-        <div id="form_element_wrapper">
-            <label id="experience_label">
-            	Experience
-            </label>
-
-            <input type="textarea" name="experience" id="input_experience_new">
-        </div>
-
-		<div id="form_element_wrapper">
-            <label id="education_label">
-            	Education
-            </label>
-
-            <input type="textarea" name="education" id="input_education_new">
-        </div>
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label id="description_label" class="control-label" for="input_description">Description</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="text" name="description" id="input_description" placeholder="" name="input_name" class="form-control input">
+                 </div> 
+            </div>
 
 
-		<div id="form_element_wrapper">
-            <label id="salary_label">
-            	Salary
-            </label>
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="skills_label">Skills</label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="skills" id="input_skills" class="form-control input">
+                 </div> 
+            </div>
 
-            <input type="textarea" name="salary" id="input_salary_new">
-        </div>
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="experience_label">
+                        Experience
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="experience" id="input_experience" class="form-control input">
+                 </div> 
+            </div>
 
-         <div id="submit_resume_new_wrapper" class="form-group">
-             <div class="">
-                <button id="submit_resume_new" name="submit_resume" class="btn btn-info" type="submit">
-                    <span class=""></span> Save
-                </button>
+
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="education_label">
+                        Education
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="education" id="input_education" class="form-control input">
+                 </div> 
+            </div>
+
+            <div id="form_element_wrapper" class = "control-group row">
+                <div class="col-md-2">
+                    <label class="control-label" for="salary_label">
+                        Salary
+                    </label>
+                </div>
+                <div class="controls col-md-10" >
+                <input type="textarea" name="salary" id="input_salary" class="form-control input">
+                 </div> 
+            </div>
+            
+            <div id="submit_profile_edit_wrapper" class="form-group" align="center" style="margin:15px">
+                 <div class="">
+                    <button id="submit_profile_edit" name="submit_profile" class="btn btn-primary btn-lg" type="submit">
+                        <span class=""></span> Save
+                    </button>
+                </div>
             </div>
         </div>
 	</form>
