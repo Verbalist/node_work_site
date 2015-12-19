@@ -16,7 +16,7 @@ function initPosition(){
 function initEmployerProfile(){
     var uri = window.location.href;
     console.log(uri.split("/").slice(-2,-1)[0]);
-    var response = getProfileByIdEmployer(uri.split("/").slice(-2,-1)[0])
+    var response = getProfileByIdEmployer(req.session.customer_id)
     var template = $("#editProfileEmployer").html();
     console.log(response);
     var html = Mustache.render(template, response.profile_info);
@@ -27,7 +27,7 @@ function showPositionSettings(id){
     console.log("showPositionSettings - Started!!!");   
     var uri = window.location.href;
     console.log(uri.split("/").slice(-2,-1)[0]);
-    location.href = "/employer/"+ uri.split("/").slice(-2,-1)[0] + "/position/" + id; 
+    location.href = "/employer/position/" + id; 
 }
 
 function showPositions(){

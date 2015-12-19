@@ -7,7 +7,7 @@ router.post('/employee/:id/resumes', function(req, res, next) {
 	console.log('/employee/:id/resumes')
 	var result = {};
 	var request = {};
-	request.id = "5650b6df82e4f4fa52c3f7b7";
+	request.id = req.session.customer_id;
 	
 	requestMaker.post('/employee/getResumes', request, 
 		function (result) {
@@ -61,7 +61,7 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
 	var request = JSON.parse(req.body.json);
 	console.log(request);
 	request.id = req.params.id;
-	request.creator_id = "5650b6df82e4f4fa52c3f7b7";
+	request.creator_id =  req.session.customer_id;
 	console.log(request);
 
 	requestMaker.post('/resume/updateResume', request, 
@@ -81,8 +81,9 @@ router.post('/employee/addResume', function(req, res, next) {
 	//var resume = JSON.parse(req.body.json);
 	//resume._id = "3";
 	var request = JSON.parse(req.body.json);
-	request.creator_id = "5650b6df82e4f4fa52c3f7b7";
-
+	request.creator_id =  req.session.customer_id;
+	console.log(request);
+	
 	try{
 		requestMaker.post('/resume/newResume', request, 
 			function (result) {

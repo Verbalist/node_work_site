@@ -35,7 +35,7 @@
   <ul class="nav navbar-nav navbar-right">
     <% if (auth == 'true') { %>
       <li>      
-        <a href="#">{{name}}</a>
+        <a href="#">{{role}}</a>
         <img src="#">{{avatar}}>
       </li>
       <li>
@@ -47,23 +47,24 @@
     <% } %>
   </ul>
 </div><!--/.nav-collapse -->
-
+<% if (role == "employer") { %>
 <div class="container">
   <ul class="nav navbar-nav"> 
-      <li><a href="/employer/droom">index</a></li>
-      <li><a href="/employer/droom/profile">profile</a></li>
-      <li><a href="/employer/droom/position/new">new position</a></li>
-      <li><a href="/employer/droom/position/1">edit position</a></li>
-      <li><a href="/employer/droom/positions">position</a></li>
+      <li><a href='/employer/'>index</a></li>
+      <li><a href="/employer/profile">profile</a></li>
+      <li><a href="/employer/position/new">new position</a></li>
+      <li><a href="/employer/positions">position</a></li>
     </ul>
 </div>
+<% } %>
 
+<% if (role == "employee") { %>
 <div class="container">
   <ul class="nav navbar-nav"> 
-      <li><a href="/employee/joby">index</a></li>
-      <li><a href="/employee/joby/profile">profile</a></li>
-      <li><a href="/employee/joby/resume/new">new resume</a></li>
-      <li><a href="/employee/joby/resume/1">edit resume</a></li>
-      <li><a href="/employee/joby/resumes">resumes</a></li>
+      <li><a href='/employee/'>index</a></li>
+      <li><a href="/employee/profile">profile</a></li>
+      <li><a href="/employee/resume/new">new resume</a></li>
+      <li><a href="/employee/resumes">resumes</a></li>
     </ul>
 </div>
+<% } %>
