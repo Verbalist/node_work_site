@@ -59,7 +59,7 @@ router.post('/auth/login', function(req, res, next) {
 					res.cookie('node_sessid', crypto.randomBytes(32).toString('hex'));	
 					res.cookie('auth', true);
 					res.cookie('role', result.role);
-					res.session.customer_id = result.id_store;
+					req.session.customer_id = result.id_store;
 					res.redirect('/search');
 					return
 				} else {
