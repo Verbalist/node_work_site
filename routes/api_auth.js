@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 var crypto = require('crypto');
 var db = require('../models/db')
+var requestMaker = require('../libs/requestMaker.js');
 
 var HASH_ALG = 'sha1';
 
@@ -21,11 +22,25 @@ router.post('/auth/registration', function(req, res, next) {
 		var salt = crypto.randomBytes(32).toString('hex');
 		var hash_pass = create_encrypted_password(HASH_ALG, req.body.password, salt);
 		hash_pass = [HASH_ALG, salt, hash_pass].join("$");
-		db.query('INSERT INTO "user"(login, password, role) values($1, $2, $3)', 
-			[req.body.login, hash_pass, req.body.role], function (result){
+
+		var request = {
+			name: 'Desh',
+			category: 'IT',
+			status: 'Free',
+			email: req.body.login,
+			phone: '123'
+		}; 
+
+		requestMaker.post('/employee/newEmployee', request, 
+		function (response) {
+			console.log(response)
+		  	result = response;
+  			db.query('INSERT INTO "user"(login, password, role, id_store) values($1, $2, $3, $4)', 
+			[req.body.login, hash_pass, req.body.role, response.id], function (result){
 				if (!err) { res.json({'error_code': 0}); } 
 				else { res.json({'error_code': 2}); }
-		})
+			})
+  		});
 	} catch (e){
 		console.log(e);
 		res.json({'error_code': 2});
@@ -34,7 +49,7 @@ router.post('/auth/registration', function(req, res, next) {
 
 router.post('/auth/login', function(req, res, next) {
 	try {
-		db.query('select password, role from "user" where login = $1', 
+		db.query('select password, role, id_store from "user" where login = $1', 
 			[req.body.login], function (result){
 			if (result.length != 0) {
 				console.log(result);
@@ -43,6 +58,7 @@ router.post('/auth/login', function(req, res, next) {
 					res.cookie('node_sessid', crypto.randomBytes(32).toString('hex'));	
 					res.cookie('auth', true);
 					res.cookie('role', result.role);
+					res.session.customer_id = result.id_store;
 					res.redirect('/search');
 					return
 				} else {

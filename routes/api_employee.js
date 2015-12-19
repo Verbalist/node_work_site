@@ -9,7 +9,6 @@ router.post('/employee/:id/resumes', function(req, res, next) {
 
 	console.log("heeey");
 	var request = {};
-	console.log(request);
 	request.id = "5650b6df82e4f4fa52c3f7b7";
 	
 	requestMaker.post('/employee/getResumes', request, 
@@ -27,7 +26,7 @@ router.get('/employee/resume/:id', function(req, res, next) {
 	var request = {
 		id : req.params.id
 	}; 
-	
+
 	requestMaker.post('/resume/getResume', request, 
 		function (response) {
 			console.log(response)
