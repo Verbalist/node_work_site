@@ -3,8 +3,8 @@ var request = require('request');
 var router = express.Router();
 var requestMaker = require('../libs/requestMaker.js');
 
-router.post('/employee/:id/resumes', function(req, res, next) {
-	console.log('/employee/:id/resumes')
+router.post('/employee/resumes', function(req, res, next) {
+	console.log('/employee/resumes')
 	var result = {};
 
 	console.log("heeey");

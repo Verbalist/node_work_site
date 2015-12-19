@@ -2,35 +2,30 @@ var express = require('express');
 var router = express.Router();
 
 
-router.get('/:name', function(req, res, next) {
-	console.log('/:name')
-	console.log(req.params.name)
+router.get('/', function(req, res, next) {
+	console.log('/')
   res.render('employee/employee_index', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
-router.get('/:name/resumes', function(req, res, next) {
-	console.log('/:name/resumes')
-	console.log(req.params.name + " resumes")
+router.get('/resumes', function(req, res, next) {
+	console.log('/resumes')
 	console.log(req.query.id)
   res.render('employee/employee_resumes', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
-router.get('/:name/resume/new', function(req, res, next) {
-	console.log('/:name/resume/new')
-	console.log(req.params.name + " resume/new")
+router.get('/resume/new', function(req, res, next) {
+	console.log('/resume/new')
   	res.render('employee/employee_resume_new', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
-router.get('/:name/resume/:resume_id', function(req, res, next) {
-	console.log('/:name/resume/edit/:resume_id');
-	console.log(req.params.name);
+router.get('/resume/:resume_id', function(req, res, next) {
+	console.log('/resume/edit/:resume_id');
 	console.log(req.params.resume_id);
   	res.render('employee/employee_resume_edit', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 
-router.get('/:name/profile', function(req, res, next) {
-	console.log('/:name/profile/')
-	console.log(req.params.name)
+router.get('/profile', function(req, res, next) {
+	console.log('/profile/')
   res.render('employee/employee_profile', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
 });
 

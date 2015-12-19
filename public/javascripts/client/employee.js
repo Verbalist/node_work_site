@@ -33,13 +33,11 @@ function showResumes(){
     console.log("showResumes - Started!!!");    
     var url = window.location.href;
     var split_url = url.split("/");
-    console.log(split_url[split_url.length-2]);
-    employee_name = split_url[split_url.length-2];
     page_number = 1;//$('#page_number')[0].value;
     resumes_per_page = 10;//$('#resumes_per_page')[0].value;
     start = (page_number-1)*resumes_per_page;
     limit = resumes_per_page;
-    var response = getResumesEmployee(employee_name, limit, start);
+    var response = getResumesEmployee(limit, start);
     var template = $("#showResumesEmployee").html();
     console.log(response);
     for(var elem in response.resumes){
@@ -169,7 +167,7 @@ function getResumeByIdEmployee(resume_id){
     return result;
 }
 
-function getResumesEmployee(employee_name,limit,start){
+function getResumesEmployee(imit,start){
     console.log("getResumesEmployee - Started!!!");
 
 
@@ -177,7 +175,7 @@ function getResumesEmployee(employee_name,limit,start){
     requestArray.limit = limit;
     requestArray.start = start;
     
-    var URL = "/"+employee_name+"/resumes";
+    var URL = "/resumes";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
 
