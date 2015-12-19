@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var engine = require('ejs-locals');
+var session = require('express-session')
 
 var index = require('./routes/index');
 var employee = require('./routes/employee');
@@ -35,7 +36,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.session({secret: '1234567890QWERTY'}));
+//app.use(express.session({secret: 'GASASAGA'}))
 //app.use(express.json());  
+
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 app.use('/', index);
 app.use('/employee', employee);
