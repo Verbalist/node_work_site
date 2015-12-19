@@ -23,8 +23,11 @@ function initEmployerProfile(){
     $("#employer_profile_from_wrapper").append(html);
 }
 
-function showPositionSettings(){
-    console.log("showPositionSettings - Started!!!");    
+function showPositionSettings(id){
+    console.log("showPositionSettings - Started!!!");   
+    var uri = window.location.href;
+    console.log(uri.split("/").slice(-2,-1)[0]);
+    location.href = "/employer/"+ uri.split("/").slice(-2,-1)[0] + "/position/" + id; 
 }
 
 function showPositions(){
@@ -39,7 +42,6 @@ function showPositions(){
     limit = positions_per_page;
     var response = getPositionsEmployer(employer_name, limit, start);
     var template = $("#showPositionsEmployer").html();
-    console.log(response);
     for(var elem in response.positions){
         var html = Mustache.render(template, response.positions[elem]);
         $("#positions_list_wrapper").append(html);
@@ -96,6 +98,7 @@ function getPositionsEmployer(id, limit, start){
     console.log("getPositionByIdEmployer - Started!!!");
 
     var requestArray = {};
+    requestArray.id = id;
     requestArray.limit = limit;
     requestArray.start = start;
 
@@ -103,9 +106,11 @@ function getPositionsEmployer(id, limit, start){
 
      var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
     //  Send request
-
+    console.log(requestBody);
     var result = doRequestAjaxPostEmployer(requestBody, URL, "POST", false).responseJSON;
     checkUndefined(result);
+    console.log("halt");
+    console.log(result);
     return result;
 }
 
@@ -132,20 +137,16 @@ function findEmployerById(employer_id){
     return result;
 }
 
-function createPosition(employer_id){
+function createPosition(){
     console.log("createPosition - Started!!!");
-    var template_string = "#create_position_from_wrapper";
+    var template_string = "#position_employer_addition_form";
+
 
     var serializedArray = $(template_string).serializeArray();
+    console.log(serializedArray);
+    var URL = "/newPosition";
 
-    //  Prepare JSON and settings
-
-    var requestArray = {
-        "employer_id" : employer_id
-    };
-
-    var URL = "/createPosition";
-
+    var requestArray = {};
 
     for (var i in serializedArray) {
         requestArray[serializedArray[i].name] = serializedArray[i].value;

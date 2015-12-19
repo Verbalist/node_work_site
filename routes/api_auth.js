@@ -20,6 +20,7 @@ router.post('/auth/registration', function(req, res, next) {
 	try {
 		var salt = crypto.randomBytes(32).toString('hex');
 		var hash_pass = create_encrypted_password(HASH_ALG, req.body.password, salt);
+		//jsonReq = [];
 		hash_pass = [HASH_ALG, salt, hash_pass].join("$");
 		db.query('INSERT INTO "user"(login, password, role) values($1, $2, $3)', 
 			[req.body.login, hash_pass, req.body.role], function (result){

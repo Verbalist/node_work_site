@@ -1,55 +1,35 @@
 var express = require('express');
 var router = express.Router();
+var requestMaker = require('../libs/requestMaker.js');
 
 router.post('/employer/:id/positions', function(req, res, next) {
 	console.log('/employer/:id/positions')
 	var result = {};
+	var request = {};
 	console.log(req.params);
 	//some logic
-	var positions = [
-		{
-			"id":"1",
-			"name":"programmer",
-			"description":"super programmer",
-			"salary":"100500$",
-			"requirements":"html, css",
-			"location":"Kyiv"
-		},
-		{
-			"id":"2",
-			"name":"Deer",
-			"description":"designer",
-			"salary":"15$",
-			"requirements":"paint",
-			"location":"Zhmerynka"
-		}
-	]
-	result.error_code = 0;
-	result.positions = positions;
-	result.total = 1;
-
-	console.log(result);
-  res.json(result);
+	request.id = "5660b6b914000058001775f7"; // enter id from session here
+	requestMaker.post('/employer/getPositions', request, 
+		function (result) {
+			console.log(result)
+		  	res.json(result);
+  	});
+  	console.log(res)
 });
 
 router.get('/employer/position/:id', function(req, res, next) {
 	console.log('/employer/position/' + req.params.id)
-	var result = {};
+	var ans = {};
 
 	//some logic
-	var position ={
-			"id":"1",
-			"name":"programmer",
-			"description":"super programmer",
-			"salary":"100500$",
-			"requirements":"html, css",
-			"location":"Kyiv"
-		};
-	result.error_code = 0;
-	result.position = position;
-
-	console.log(result);
-  res.json(result);
+	ans.error_code = 0;
+	var request = {};
+	request.id = "5660b6b914000058001775f7"; // enter id from session here
+	requestMaker.post('/position/getPosition', request, 
+		function (result) {
+		  	result.total = 1;
+		  	res.json(result);
+  	});
 });
 
 router.post('/employer/deletePositions/:id', function(req, res, next) {
@@ -69,21 +49,38 @@ router.post('/employer/updatePositions/:id', function(req, res, next) {
 	console.log(req.body)
 
 	//some logic
-	
+	var request = JSON.parse(req.body.json);
+	console.log(request);
+	request.id = req.params.id;
+	request.creator_id = "5660b6b914000058001775f7"; // enter id from session here
+	console.log(request);
+
+	requestMaker.post('/position/updatePosition', request, 
+		function (result) {
+			console.log(result);
+		  	res.json(result);
+  	});
+  	
 	result.error_code = 0;
   res.json(result);
 });
 
-router.post('/employer/addPositions/', function(req, res, next) {
-	console.log('/employer/addPositions/')
+router.post('/employer/newPosition', function(req, res, next) {
+	console.log('/position/newPosition')
 	var result = {};
-	
-	console.log(req.body)
-
+	try{
+	console.log(JSON.parse(req.body.json))
 	//some logic
-	
-	result.error_code = 0;
-  res.json(result);
+	var request = JSON.parse(req.body.json);
+
+	request.creator_id = "5660b6b914000058001775f7"; // enter id from session here
+	requestMaker.post('/position/newPosition', request, 
+		function (result) {
+			res.json(result);
+	});
+} catch (err){
+	console.log(err)
+}
 });
 
 

@@ -6,8 +6,6 @@ var requestMaker = require('../libs/requestMaker.js');
 router.post('/employee/:id/resumes', function(req, res, next) {
 	console.log('/employee/:id/resumes')
 	var result = {};
-
-	console.log("heeey");
 	var request = {};
 	console.log(request);
 	request.id = "5650b6df82e4f4fa52c3f7b7";
@@ -21,7 +19,7 @@ router.post('/employee/:id/resumes', function(req, res, next) {
 });
 
 router.get('/employee/resume/:id', function(req, res, next) {
-	console.log('/employee/resumes/' + req.params.id)
+	console.log('/employee/resume/' + req.params.id)
 	var result = {};
 
 	var request = {
@@ -42,7 +40,18 @@ router.post('/employee/deleteResumes/:id', function(req, res, next) {
 	var result = {};
 	
 	//some logic
+
+	var request = {
+		id : req.params.id
+	}; 
 	
+	requestMaker.post('/resume/deleteById', request, 
+		function (response) {
+			console.log(response)
+		  	result = response;
+  			res.json(result);
+  	});
+
 	result.error_code = 0;
   res.json(result);
 });
@@ -50,8 +59,6 @@ router.post('/employee/deleteResumes/:id', function(req, res, next) {
 router.post('/employee/updateResumes/:id', function(req, res, next) {
 	console.log('/employee/updateResumes/' + req.params.id)
 
-
-	console.log("heeey");
 	var request = JSON.parse(req.body.json);
 	console.log(request);
 	request.id = req.params.id;
@@ -60,7 +67,7 @@ router.post('/employee/updateResumes/:id', function(req, res, next) {
 
 	requestMaker.post('/resume/updateResume', request, 
 		function (result) {
-			console.log(result)
+			console.log(result);
 		  	res.json(result);
   	});
 
