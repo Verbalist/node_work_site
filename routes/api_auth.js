@@ -24,22 +24,36 @@ router.post('/auth/registration', function(req, res, next) {
 		//jsonReq = [];
 		hash_pass = [HASH_ALG, salt, hash_pass].join("$");
 
-		var request = {
-			name: 'Desh',
-			category: 'IT',
-			status: 'Free',
-			email: req.body.login,
-			phone: '123'
-		}; 
+		var request = {};
+		var url;
+		if(req.body.role === "employee"){
+			request = {
+				name: 'Desh',
+				category: 'IT',
+				status: 'Free',
+				email: req.body.login,
+				phone: '123'
+			}; 
+			url = '/employee/newEmployee';
+		} else {
+			request = {
+				name: 'Desh',
+				category: 'IT',
+				website: 'example.com',
+				email: req.body.login,
+				phone: '123'
+			};
+			url = '/employer/newEmployer';
+		}
 
-		requestMaker.post('/employee/newEmployee', request, 
+		requestMaker.post(url, request, 
 		function (response) {
 			console.log(response)
 		  	result = response;
   			db.query('INSERT INTO "user"(login, password, role, id_store) values($1, $2, $3, $4)', 
 			[req.body.login, hash_pass, req.body.role, response.id], function (result){
-				if (!err) { res.json({'error_code': 0}); } 
-				else { res.json({'error_code': 2}); }
+				console.log(result)
+				res.json({'error_code': 0});
 			})
   		});
 	} catch (e){
