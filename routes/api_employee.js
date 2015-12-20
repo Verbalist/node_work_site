@@ -8,6 +8,7 @@ router.post('/employee/resumes', function(req, res, next) {
 	var result = {};
 	var request = {};
 	request.id = req.session.customer_id;
+	console.log("hytghrg");
 	
 	requestMaker.post('/employee/getResumes', request, 
 		function (result) {

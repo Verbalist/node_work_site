@@ -2,19 +2,18 @@ var express = require('express');
 var router = express.Router();
 var requestMaker = require('../libs/requestMaker.js');
 
-router.post('/employer/:id/positions', function(req, res, next) {
-	console.log('/employer/:id/positions')
+router.post('/employer/positions', function(req, res, next) {
+	console.log('/employer/positions')
 	var result = {};
 	var request = {};
-	console.log(req.params);
 	//some logic
-	request.id = "5660b6b914000058001775f7"; // enter id from session here
+	request.id = req.session.customer_id; // enter id from session here
+	console.log("wtf - " + request.id);
 	requestMaker.post('/employer/getPositions', request, 
 		function (result) {
 			console.log(result)
 		  	res.json(result);
   	});
-  	console.log(res)
 });
 
 router.get('/employer/position/:id', function(req, res, next) {
@@ -24,7 +23,7 @@ router.get('/employer/position/:id', function(req, res, next) {
 	//some logic
 	ans.error_code = 0;
 	var request = {};
-	request.id = "5660b6b914000058001775f7"; // enter id from session here
+	request.id = req.session.customer_id; // enter id from session here
 	requestMaker.post('/position/getPosition', request, 
 		function (result) {
 		  	result.total = 1;
@@ -52,7 +51,7 @@ router.post('/employer/updatePositions/:id', function(req, res, next) {
 	var request = JSON.parse(req.body.json);
 	console.log(request);
 	request.id = req.params.id;
-	request.creator_id = "5660b6b914000058001775f7"; // enter id from session here
+	request.creator_id = req.session.customer_id; // enter id from session here
 	console.log(request);
 
 	requestMaker.post('/position/updatePosition', request, 
@@ -73,7 +72,7 @@ router.post('/employer/newPosition', function(req, res, next) {
 	//some logic
 	var request = JSON.parse(req.body.json);
 
-	request.creator_id = "5660b6b914000058001775f7"; // enter id from session here
+	request.creator_id = req.session.customer_id; // enter id from session here
 	requestMaker.post('/position/newPosition', request, 
 		function (result) {
 			res.json(result);

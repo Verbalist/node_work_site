@@ -25,9 +25,13 @@ function initEmployerProfile(){
 
 function showPositionSettings(id){
     console.log("showPositionSettings - Started!!!");   
-    var uri = window.location.href;
-    console.log(uri.split("/").slice(-2,-1)[0]);
-    location.href = "/employer/position/" + id; 
+     var uri = window.location.href;
+    console.log(id);
+    var response = getPositionByIdEmployer(id);
+    var template = $("#editPositionEmployer").html();
+    console.log(response);
+    var html = Mustache.render(template, response.position);
+    $("#edit_position_from_wrapper").append(html);
 }
 
 function showPositions(){
@@ -35,12 +39,11 @@ function showPositions(){
     var url = window.location.href;
     var split_url = url.split("/");
     console.log(split_url[split_url.length-2]);
-    employer_name = split_url[split_url.length-2];
-    page_number = $('#page_number')[0].value;
-    positions_per_page = $('#positions_per_page')[0].value;
+    page_number = 1;//$('#page_number')[0].value;
+    positions_per_page = 100;//$('#positions_per_page')[0].value;
     start = (page_number-1)*positions_per_page;
     limit = positions_per_page;
-    var response = getPositionsEmployer(employer_name, limit, start);
+    var response = getPositionsEmployer(limit, start);
     var template = $("#showPositionsEmployer").html();
     for(var elem in response.positions){
         var html = Mustache.render(template, response.positions[elem]);
@@ -94,22 +97,19 @@ function getPositionByIdEmployer(resume_id){
     return result;
 }
 
-function getPositionsEmployer(id, limit, start){
+function getPositionsEmployer(limit, start){
     console.log("getPositionByIdEmployer - Started!!!");
 
     var requestArray = {};
-    requestArray.id = id;
     requestArray.limit = limit;
     requestArray.start = start;
 
-    var URL = "/"+id+"/positions";
+    var URL = "/positions";
 
      var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
     //  Send request
-    console.log(requestBody);
     var result = doRequestAjaxPostEmployer(requestBody, URL, "POST", false).responseJSON;
     checkUndefined(result);
-    console.log("halt");
     console.log(result);
     return result;
 }
