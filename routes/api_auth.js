@@ -72,7 +72,13 @@ router.post('/auth/login', function(req, res, next) {
 					res.cookie('node_sessid', crypto.randomBytes(32).toString('hex'));	
 					res.cookie('auth', true);
 					res.cookie('role', result.role);
-					req.session.customer_id = result.id_store;
+					var user = {
+						id : result.id_store,
+						role :  result.role
+					}
+					//req.session.user.id = result.id_store;
+					//req.session.user.role = result.role;
+					req.session.user = user;
 					res.redirect('/search');
 					return
 				} else {
