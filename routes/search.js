@@ -11,8 +11,16 @@ var router = express.Router();
 // });
 
 /* GET login */
+
+
 router.get('/', function(req, res, next) {
-  res.render('search/search', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+	var role = '';
+	var auth = false;
+	if('user' in req.session){
+		role = req.session.user.role;
+		auth = true;
+	}
+  	res.render('search/search', {auth: auth, role: req.cookies.role || role});
 });
 
 module.exports = router;

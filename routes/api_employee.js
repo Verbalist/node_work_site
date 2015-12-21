@@ -11,15 +11,6 @@ var requireRole = function(role) {
 	  	console.log('ERRRRROR')
 	  	res.sendStatus(403);	
     }
-      
-    //res.render('employee/employee_index', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
-   	//res.render('search/search', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
-  	/*res.writeHead(302, {
-	  'Location': 'http://localhost/search'
-	  //add other headers here...
-	});
-	res.end();
-	*/
   }
 };
 
@@ -136,21 +127,7 @@ var employee = {
 }
 
 router.post('/employee/resumes', employee.resumes);
-	//var resume = JSON.parse(req.body.json);
-	//resume._id = "3";
-	var request = JSON.parse(req.body.json);
-	request.creator_id =  req.session.customer_id;
-	console.log(request);
-	
-	try{
-		requestMaker.post('/resume/newResume', request, 
-			function (result) {
-			  	res.json(result);
-	  	});
-	}catch(err){
-		console.log("!!!");
-	}
-});
+
 router.get('/employee/resume/:id', employee.resume);
 
 router.post('/employee/deleteResumes/:id', employee.deleteResumes);

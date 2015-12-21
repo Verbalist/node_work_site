@@ -9,42 +9,33 @@ var requireRole = function(role) {
 	  	console.log('ERRRRROR')
 	  	res.redirect('/search');	
     }
-      
-    //res.render('employee/employee_index', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
-   	//res.render('search/search', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
-  	/*res.writeHead(302, {
-	  'Location': 'http://localhost/search'
-	  //add other headers here...
-	});
-	res.end();
-	*/
   }
 };
 
 router.get('/resumes', [requireRole('employee'), function(req, res, next) {
 	console.log('/resumes')
-  	res.render('employee/employee_resumes', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+  	res.render('employee/employee_resumes', {auth: true, role: req.session.user.role});
 }]);
 
 router.get('/', [requireRole('employee'), function(req, res, next) {
 	console.log('/')
-	res.render('employee/employee_index', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+	res.render('employee/employee_index', {auth: true, role: req.session.user.role});
 }]);
 
 router.get('/resume/new', [requireRole('employee'), function(req, res, next) {
 	console.log('/resume/new')
-	res.render('employee/employee_resume_new', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+	res.render('employee/employee_resume_new', {auth: true, role: req.session.user.role});
 }]);
 
 router.get('/resume/:resume_id', [requireRole('employee'), function(req, res, next) {
 	console.log('/resume/edit/:resume_id');
 	console.log(req.params.resume_id);
-  	res.render('employee/employee_resume_edit', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+  	res.render('employee/employee_resume_edit', {auth: true, role: req.session.user.role});
 }]);
 
 router.get('/profile', [requireRole('employee'), function(req, res, next) {
 	console.log('/profile/')
-  	res.render('employee/employee_profile', {auth: req.cookies.auth || false, role: req.cookies.role || 'employee'});
+  	res.render('employee/employee_profile', {auth: true, role: req.session.user.role});
 }]);
 
 module.exports = router;

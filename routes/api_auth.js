@@ -100,8 +100,9 @@ router.post('/auth/login', function(req, res, next) {
 router.get('/auth/logout', function(req, res, next) {
 	try {
 		res.clearCookie('node_sessid');
+		delete req.session.user;
 		res.cookie('auth', false);
-		res.cookie('role', 'employee');
+		res.cookie('role', '');
 		res.redirect('/search');
 		return
 	}
