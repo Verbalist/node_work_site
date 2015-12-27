@@ -1,15 +1,18 @@
 function showSearchPositions(){
-	console.log("showPositions - Started!!!");    
+	$("#positions_find_list_wrapper").empty();
+	console.log("showPositions - Started!!!");
     var url = window.location.href;
     var split_url = url.split("/");
     console.log(split_url[split_url.length-2]);
     //$('#page_number')[0].value;
     text_string = $('#search_text')[0].value;
     var response = getPositionsSearch(text_string);
+		console.log(response)
     var template = $("#showPositionsEmployer").html();
+		console.log(template)
     for(var elem in response.positions){
         var html = Mustache.render(template, response.positions[elem]);
-        $("#positions_list_wrapper").append(html);
+        $("#positions_find_list_wrapper").append(html);
     }
 }
 
@@ -22,7 +25,7 @@ function getResumesSearch(imit,start){
     var requestArray = {};
     requestArray.limit = limit;
     requestArray.start = start;
-    
+
     var URL = "/resumes";
 
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(requestArray));
