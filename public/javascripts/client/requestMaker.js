@@ -58,6 +58,25 @@ function doRequestAjaxPostEmployer (requestJson, URL, method, async){
 
 }
 
+
+function doRequestAjaxPostSearch (requestJson, URL, method, async){
+    return $.ajax({
+        url: path + restPath + searchPath + URL,
+        type: method,
+        data: requestJson,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        mimeType: 'application/json',
+        async: async,
+
+        success: function (data) {
+            return data
+        },
+        error: function (data, status, er) {
+
+        }
+    });
+
+}
 function sendJSON(path, args) {
     var requestBody = 'json=' + encodeURIComponent(JSON.stringify(args));
     //  Send request

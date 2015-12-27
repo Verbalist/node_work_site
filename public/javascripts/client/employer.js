@@ -16,7 +16,7 @@ function initPosition(){
 function initEmployerProfile(){
     var uri = window.location.href;
     console.log(uri.split("/").slice(-2,-1)[0]);
-    var response = getProfileByIdEmployer(req.session.customer_id)
+    var response = getProfileByIdEmployer()
     var template = $("#editProfileEmployer").html();
     console.log(response);
     var html = Mustache.render(template, response.profile_info);
@@ -201,7 +201,6 @@ function getProfileByIdEmployer(employer_id){
     //  Prepare JSON and settings
 
     var requestArray = {};
-    requestArray.employer_id = employer_id;
 
     var URL = "/profile";
 

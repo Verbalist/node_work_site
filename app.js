@@ -15,6 +15,7 @@ var auth = require('./routes/auth');
 var api_auth = require('./routes/api_auth');
 var api_employer = require('./routes/api_employer');
 var api_employee = require('./routes/api_employee');
+var api_search = require('./routes/api_search');
 var app = express();
 
 // view engine setup
@@ -49,6 +50,7 @@ app.use('/auth', auth);
 app.use('/search', search);
 app.use('/api', api_employee);
 app.use('/api', api_employer);
+app.use('/api', api_search);
 app.use('/api', api_auth);
 
 
