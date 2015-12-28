@@ -9,7 +9,6 @@ function showSearchPositions(){
     var response = getPositionsSearch(text_string);
 		console.log(response)
     var template = $("#showPositionsEmployer").html();
-		console.log(template)
     for(var elem in response.positions){
         var html = Mustache.render(template, response.positions[elem]);
         $("#positions_find_list_wrapper").append(html);
@@ -49,7 +48,7 @@ function getPositionsSearch(text_string){
     console.log("getPositionsSearch - Started!!!");
 
     var requestArray = {};
-    requestArray.text_string = text_string;
+    requestArray.query = text_string;
 
     var URL = "/search";
 
